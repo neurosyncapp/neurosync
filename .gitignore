@@ -1,0 +1,12 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# builds
+dist/
+**/dist/
+program/target/
+target/
+
+# secrets & local env  (NEVER commit)
+.env
