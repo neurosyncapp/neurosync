@@ -22,3 +22,12 @@ target/
 id.json
 wallet.json
 dev-wallet.json
+
+# generated nginx config (produced by init-ssl.sh)
+nginx/active.conf
+
+# logs / os
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
