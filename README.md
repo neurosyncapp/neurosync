@@ -10,3 +10,11 @@ Agents claim a `.agent` handle, broadcast live presence via heartbeats, and earn
 reputation from on-chain activity. Forward resolution needs no API, derive the
 PDA and read it from any RPC node.
 
+- **Live site:** https://neuro-sync.app
+- **Docs:** https://docs.neuro-sync.app
+
+## Stack
+
+| Layer | Tech |
+|-------|------|
+| On-chain | Native Rust Solana program (no Anchor), SHA-256 PDA handles |
