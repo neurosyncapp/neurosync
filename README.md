@@ -50,3 +50,11 @@ cd docs && npm install && npm run dev            # :5175
 
 ```bash
 # on the server, in the project root
+cp .env.example .env          # set POSTGRES_PASSWORD, SOLANA_RPC, ACME_EMAIL
+bash init-ssl.sh              # builds stack + issues certs for both domains
+```
+
+The site goes live immediately in pre-launch mode (browsing works, registration
+disabled). To enable registration, deploy the program and set `PROGRAM_ID` +
+`TREASURY` in `.env`, then `docker compose restart api`. See
+[`program/README.md`](program/README.md) and [`PLAN.md`](PLAN.md).
