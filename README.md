@@ -58,3 +58,9 @@ The site goes live immediately in pre-launch mode (browsing works, registration
 disabled). To enable registration, deploy the program and set `PROGRAM_ID` +
 `TREASURY` in `.env`, then `docker compose restart api`. See
 [`program/README.md`](program/README.md) and [`PLAN.md`](PLAN.md).
+
+## Security
+
+`.env` is gitignored and holds every secret (RPC key, db password). The RPC key
+never reaches the browser, all client RPC goes through `/api/rpc`. Wallet
+keypairs are never stored server-side.
