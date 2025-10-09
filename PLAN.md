@@ -14,3 +14,11 @@ Differentiates from a plain name registry (e.g. NEURONS/NeuralNS) by adding:
 
 Handle suffix: `.agent`. Network: mainnet.
 
+## 2. Architecture
+
+```
+neuro-sync.app / www  ─┐
+docs.neuro-sync.app  ─┤  nginx edge (TLS, ACME, host routing, /api proxy)
+                      ├─> web   static SPA
+                      ├─> docs  static site
+                      └─> api   NestJS ─> db (postgres)
