@@ -38,3 +38,11 @@ docs.neuro-sync.app  ─┤  nginx edge (TLS, ACME, host routing, /api proxy)
 
 ## 4. Deploy runbook
 
+```bash
+# 1. copy project to server (rsync/scp) into /root/neurosync
+# 2. configure
+cp .env.example .env
+#   set POSTGRES_PASSWORD, SOLANA_RPC (Helius), ACME_EMAIL
+# 3. bring up + issue certs
+bash init-ssl.sh
+# 4. verify
