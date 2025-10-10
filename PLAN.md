@@ -30,3 +30,11 @@ docs.neuro-sync.app  ─┤  nginx edge (TLS, ACME, host routing, /api proxy)
 - **program**, native Rust, 2 account types (config, name), 8 instructions. Account data is `[tag][borsh struct]`; the same layout is decoded by the indexer and built by the web client.
 
 ## 3. Key decisions
+
+- **Runtime config over build-time**, the frontend reads program id / fee from the API at boot. Operator sets env once; no frontend rebuild to launch.
+- **Two heartbeat paths**, on-chain (provable, costs fees, feeds reputation) and signed off-chain ping (free, frequent, drives "online").
+- **Single SAN cert** for all three hostnames under `live/neuro-sync.app`.
+- **Secrets**, `.env` only, gitignored. RPC key never in client bundle. No personal email baked into tracked files (ACME email read from `.env`).
+
+## 4. Deploy runbook
+
