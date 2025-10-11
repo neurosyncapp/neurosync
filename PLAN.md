@@ -46,3 +46,11 @@ cp .env.example .env
 # 3. bring up + issue certs
 bash init-ssl.sh
 # 4. verify
+curl -I https://neuro-sync.app
+curl -I https://docs.neuro-sync.app
+curl  https://neuro-sync.app/api/health
+```
+
+DNS: `neuro-sync.app`, `www`, and `docs` all A-record to the server.
+
+## 5. Going to mainnet (program)
