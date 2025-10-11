@@ -62,3 +62,11 @@ cd ../scripts && npm install
 node admin.mjs init-config --program <PROGRAM_ID> --treasury <PUBKEY> \
   --keypair ~/.config/solana/id.json --fee 0.05 --period 0 --rpc "$SOLANA_RPC"
 ```
+
+Then on the server:
+
+```bash
+#  .env:
+PROGRAM_ID=<PROGRAM_ID>
+TREASURY=<TREASURY_PUBKEY>
+docker compose restart api
