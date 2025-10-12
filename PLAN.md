@@ -70,3 +70,11 @@ Then on the server:
 PROGRAM_ID=<PROGRAM_ID>
 TREASURY=<TREASURY_PUBKEY>
 docker compose restart api
+```
+
+The indexer starts picking up registrations; the site enables registration
+automatically (via `/api/config`). No rebuild.
+
+## 6. Operations
+
+- Certs auto-renew via the certbot service (12h loop).
