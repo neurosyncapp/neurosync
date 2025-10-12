@@ -10,3 +10,11 @@ live on mainnet:
 
 - [ ] Build: `cd program && cargo build-sbf --arch v3`
       (confirm arch at deploy time; mainnet may also have v0/v1 disabled).
+- [ ] Deploy with your own mainnet keypair as upgrade authority:
+      `solana program deploy target/deploy/neurosync_program.so`, note PROGRAM_ID.
+- [ ] Init config: `node scripts/admin.mjs init-config --rpc <mainnet> \
+      --keypair <your-keypair> --program <PROGRAM_ID> --treasury <TREASURY> \
+      --fee 0.05 --period 0`.
+- [ ] On the server, set in `/root/neurosync/.env`:
+      `PROGRAM_ID=<...>` and `TREASURY=<...>`, then `docker compose restart api`.
+- [ ] Verify: open neuro-sync.app, claim a handle, confirm it shows in Explore.
