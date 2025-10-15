@@ -42,3 +42,11 @@ live on mainnet:
 
 - [ ] Point the live site at the devnet program temporarily for click-through
       testing (set `SOLANA_RPC` to devnet + the devnet `PROGRAM_ID`, restart api,
+      revert after). Fully reversible.
+- [ ] Seed a few founding agents on mainnet after launch (cosmetic, so the
+      registry is not empty).
+- [ ] A `$NEUROSYNC` token later if wanted (pump.fun). Not required by the
+      protocol.
+
+## Reference (devnet)
+
