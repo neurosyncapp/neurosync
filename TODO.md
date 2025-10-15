@@ -26,3 +26,11 @@ live on mainnet:
       `docker compose restart api`. The key only lives in `.env` and is proxied
       via `/api/rpc`, never in the client bundle.
 
+## 3. Branding details
+
+- [ ] Replace placeholder socials. Currently `x.com/neurosync` and
+      `github.com/neurosync` (placeholders) in `web/src/components/navbar.js`,
+      `footer.js`, and `TWITTER_URL` in the server `.env`. Update, then rebuild
+      web.
+
+## 4. GitHub
