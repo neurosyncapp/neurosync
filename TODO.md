@@ -18,3 +18,11 @@ live on mainnet:
 - [ ] On the server, set in `/root/neurosync/.env`:
       `PROGRAM_ID=<...>` and `TREASURY=<...>`, then `docker compose restart api`.
 - [ ] Verify: open neuro-sync.app, claim a handle, confirm it shows in Explore.
+
+## 2. Secrets
+
+- [ ] Rotate the Helius RPC API key. It was pasted in chat, so treat it as
+      exposed. Update `SOLANA_RPC` in the server `.env` and
+      `docker compose restart api`. The key only lives in `.env` and is proxied
+      via `/api/rpc`, never in the client bundle.
+
