@@ -26,3 +26,11 @@ nginx/      Edge proxy configs (bootstrap.conf, full.conf, generated active.conf
 - NO em dashes anywhere (site, docs, README, comments, commits). Use commas,
   periods, or parentheses. This is a standing preference.
 - No gimmicky "live" / "online" blinking text or fake counters. Keep it
+  minimalist and clean. Branding is dark with purple accents (`#8b5cf6`,
+  `#a78bfa`), near-black background.
+- The on-chain byte layout is duplicated in three places and MUST stay in sync:
+  `program/src/state.rs` (writes it), `api/src/indexer/indexer.service.ts`
+  (decodes it), `web/src/lib/program.js` (builds instructions). Change all three
+  together. Same for instruction tags.
+- Secrets live only in the server `.env` (gitignored). The Helius RPC key never
+  reaches the browser; all client RPC goes through `/api/rpc`. Never commit keys
