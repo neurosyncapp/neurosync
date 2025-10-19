@@ -50,3 +50,11 @@ Each frontend builds with `npm run build` (Vite). The api builds with
 
 ## Deploy (this server)
 
+The project lives at `/root/neurosync`. Standard redeploy from a dev machine:
+
+```
+# from the repo parent dir
+tar czf neurosync.tgz --exclude=node_modules --exclude=dist --exclude=target \
+  --exclude=.git neurosync
+scp neurosync.tgz root@neurosync:/root/
+ssh root@neurosync 'cd /root && cp neurosync/.env /tmp/ns.env && \
