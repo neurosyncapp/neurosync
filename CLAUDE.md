@@ -42,3 +42,11 @@ Local dev:
 ```
 docker compose -f docker-compose.dev.yml up -d   # db + api on :4000
 cd web  && npm install && npm run dev             # :3000
+cd docs && npm install && npm run dev             # :5175
+```
+
+Each frontend builds with `npm run build` (Vite). The api builds with
+`nest build`.
+
+## Deploy (this server)
+
