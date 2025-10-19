@@ -66,3 +66,11 @@ ssh root@neurosync 'cd /root && cp neurosync/.env /tmp/ns.env && \
 Always preserve `.env` and `nginx/active.conf` across extraction (they are not
 in the tarball). Rebuild only the service you changed (`web`, `docs`, or `api`).
 
+TLS is already issued (single SAN cert for apex + www + docs, auto-renewed by the
+certbot service). To re-issue: `bash init-ssl.sh`. Note the certbot service has a
+renew-loop entrypoint, so a one-off issuance needs
+`docker compose run --rm --entrypoint certbot certbot certonly ...`.
+
+## On-chain program
+
+Build needs the Solana toolchain. Devnet has older bytecode versions disabled,
