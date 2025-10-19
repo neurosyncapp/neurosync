@@ -58,3 +58,11 @@ tar czf neurosync.tgz --exclude=node_modules --exclude=dist --exclude=target \
   --exclude=.git neurosync
 scp neurosync.tgz root@neurosync:/root/
 ssh root@neurosync 'cd /root && cp neurosync/.env /tmp/ns.env && \
+  cp neurosync/nginx/active.conf /tmp/ns.active; tar xzf neurosync.tgz && \
+  cp /tmp/ns.env neurosync/.env && cp /tmp/ns.active neurosync/nginx/active.conf && \
+  cd neurosync && docker compose up -d --build web'   # or: docs / api
+```
+
+Always preserve `.env` and `nginx/active.conf` across extraction (they are not
+in the tarball). Rebuild only the service you changed (`web`, `docs`, or `api`).
+
