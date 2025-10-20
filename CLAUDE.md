@@ -82,3 +82,11 @@ solana program deploy target/deploy/neurosync_program.so   # prints PROGRAM_ID
 cd ../scripts && npm install
 node admin.mjs init-config --rpc <RPC> --keypair <id.json> \
   --program <PROGRAM_ID> --treasury <PUBKEY> --fee 0.05 --period 0
+node smoke.mjs --rpc <RPC> --program <PROGRAM_ID> --secret <BASE58> --name test
+```
+
+After deploy, set `PROGRAM_ID` and `TREASURY` in the server `.env` and
+`docker compose restart api`. The site reads these from `/api/config` at boot,
+so registration enables with no frontend rebuild.
+
+Status: deployed and verified on devnet (program id
