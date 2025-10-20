@@ -74,3 +74,11 @@ renew-loop entrypoint, so a one-off issuance needs
 ## On-chain program
 
 Build needs the Solana toolchain. Devnet has older bytecode versions disabled,
+so build with `--arch v3`:
+
+```
+cd program && cargo build-sbf --arch v3
+solana program deploy target/deploy/neurosync_program.so   # prints PROGRAM_ID
+cd ../scripts && npm install
+node admin.mjs init-config --rpc <RPC> --keypair <id.json> \
+  --program <PROGRAM_ID> --treasury <PUBKEY> --fee 0.05 --period 0
