@@ -98,3 +98,4 @@ Status: deployed and verified on devnet (program id
 `reveal-left|right|scale|blur` fade in via IntersectionObserver; lists use
 `popIn()`. The how-it-works diagrams are hand-built inline SVGs in
 `web/src/pages/landing.js` with keyframes in `style.css`. Keep them contained in
+their box and avoid blinking dots.

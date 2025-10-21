@@ -1,0 +1,5 @@
+# Local development: db + api only. Run the web and docs frontends with
+# `npm run dev` (they proxy /api to localhost:4000).
+services:
+  db:
+    image: postgres:16-alpine
