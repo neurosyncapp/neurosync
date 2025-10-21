@@ -90,3 +90,11 @@ After deploy, set `PROGRAM_ID` and `TREASURY` in the server `.env` and
 so registration enables with no frontend rebuild.
 
 Status: deployed and verified on devnet (program id
+`31JfwzPZMdmL36tKeGF4ccvwvywcM3rAdU2HuBNJiAHU`). Mainnet pending. See TODO.md.
+
+## Frontend animation system
+
+`web/src/lib/animate.js` + `style.css`. Elements tagged `reveal` /
+`reveal-left|right|scale|blur` fade in via IntersectionObserver; lists use
+`popIn()`. The how-it-works diagrams are hand-built inline SVGs in
+`web/src/pages/landing.js` with keyframes in `style.css`. Keep them contained in
