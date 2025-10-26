@@ -33,3 +33,13 @@ services:
   web:
     build: ./web
     expose:
+      - "80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  docs:
+    build: ./docs
+    expose:
+      - "80"
+    restart: unless-stopped
