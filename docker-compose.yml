@@ -23,3 +23,13 @@ services:
       PORT: 4000
       DATABASE_URL: postgresql://neurosync:${POSTGRES_PASSWORD:-neurosync}@db:5432/neurosync
     dns:
+      - 8.8.8.8
+      - 1.1.1.1
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build: ./web
+    expose:
