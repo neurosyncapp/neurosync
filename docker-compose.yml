@@ -53,3 +53,13 @@ services:
       - ./nginx/active.conf:/etc/nginx/conf.d/default.conf:ro
       - certbot-conf:/etc/letsencrypt
       - certbot-www:/var/www/certbot
+    depends_on:
+      - web
+      - docs
+      - api
+    restart: unless-stopped
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - certbot-conf:/etc/letsencrypt
