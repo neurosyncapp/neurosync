@@ -16,3 +16,15 @@ cp nginx/bootstrap.conf nginx/active.conf
 docker compose up -d --build
 
 echo "==> Waiting for edge nginx..."
+sleep 8
+
+D_ARGS=""
+for d in "${DOMAINS[@]}"; do D_ARGS="$D_ARGS -d $d"; done
+
+echo "==> Requesting certificate for: ${DOMAINS[*]}"
+# --entrypoint certbot overrides the renew-loop entrypoint the long-running
+# certbot service uses; without it `run certbot certonly` would just loop.
+docker compose run --rm -T --entrypoint certbot certbot certonly \
+  --webroot --webroot-path=/var/www/certbot \
+  --cert-name "$CERT_NAME" \
+  $D_ARGS \
