@@ -8,3 +8,13 @@ description = "NeuroSync, namespace + presence registry for AI agents on Solana"
 crate-type = ["cdylib", "lib"]
 
 [features]
+no-entrypoint = []
+
+[dependencies]
+solana-program = "1.18"
+borsh = { version = "1.5", features = ["derive"] }
+thiserror = "1.0"
+
+[profile.release]
+overflow-checks = true
+lto = "fat"
