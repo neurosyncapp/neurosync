@@ -34,3 +34,5 @@ docker compose run --rm -T --entrypoint certbot certbot certonly \
 echo "==> Switching to TLS config..."
 cp nginx/full.conf nginx/active.conf
 docker compose exec nginx nginx -s reload
+
+echo "==> Done. https://neuro-sync.app and https://docs.neuro-sync.app are live."
