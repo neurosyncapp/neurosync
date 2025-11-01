@@ -28,3 +28,9 @@ docker compose run --rm -T --entrypoint certbot certbot certonly \
   --webroot --webroot-path=/var/www/certbot \
   --cert-name "$CERT_NAME" \
   $D_ARGS \
+  $EMAIL_ARG \
+  --agree-tos --non-interactive --keep-until-expiring
+
+echo "==> Switching to TLS config..."
+cp nginx/full.conf nginx/active.conf
+docker compose exec nginx nginx -s reload
