@@ -53,3 +53,13 @@ impl Config {
 
 impl NameRecord {
     pub fn load(data: &[u8]) -> Option<NameRecord> {
+        if data.is_empty() || data[0] != TAG_NAME {
+            return None;
+        }
+        // Use deserialize (not try_from_slice) so trailing reserved zero bytes
+        // in the fixed-size account are ignored.
+        let mut slice = &data[1..];
+        NameRecord::deserialize(&mut slice).ok()
+    }
+
+    pub fn store(&self, data: &mut [u8]) -> Result<(), std::io::Error> {
