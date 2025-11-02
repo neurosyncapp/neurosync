@@ -33,3 +33,13 @@ pub struct NameRecord {
     pub bump: u8,
     pub label: String,
     pub metadata_uri: String,
+}
+
+impl Config {
+    pub fn load(data: &[u8]) -> Option<Config> {
+        if data.is_empty() || data[0] != TAG_CONFIG {
+            return None;
+        }
+        let mut slice = &data[1..];
+        Config::deserialize(&mut slice).ok()
+    }
