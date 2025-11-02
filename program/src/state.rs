@@ -43,3 +43,13 @@ impl Config {
         let mut slice = &data[1..];
         Config::deserialize(&mut slice).ok()
     }
+
+    pub fn store(&self, data: &mut [u8]) -> Result<(), std::io::Error> {
+        data[0] = TAG_CONFIG;
+        let mut cursor = &mut data[1..];
+        self.serialize(&mut cursor)
+    }
+}
+
+impl NameRecord {
+    pub fn load(data: &[u8]) -> Option<NameRecord> {
