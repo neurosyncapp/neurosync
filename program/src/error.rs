@@ -18,3 +18,13 @@ pub enum NeuroError {
     #[error("Invalid treasury account")]
     InvalidTreasury,
     #[error("Label too long or empty")]
+    InvalidLabel,
+    #[error("Metadata URI too long")]
+    InvalidUri,
+    #[error("Missing required signature")]
+    MissingSignature,
+}
+
+impl From<NeuroError> for ProgramError {
+    fn from(e: NeuroError) -> Self {
+        ProgramError::Custom(e as u32)
