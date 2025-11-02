@@ -63,3 +63,13 @@ impl NameRecord {
     }
 
     pub fn store(&self, data: &mut [u8]) -> Result<(), std::io::Error> {
+        // Zero the buffer first so stale bytes from a longer previous value
+        // can't corrupt the trailing region.
+        for b in data.iter_mut() {
+            *b = 0;
+        }
+        data[0] = TAG_NAME;
+        let mut cursor = &mut data[1..];
+        self.serialize(&mut cursor)
+    }
+}
