@@ -28,3 +28,5 @@ pub enum NeuroError {
 impl From<NeuroError> for ProgramError {
     fn from(e: NeuroError) -> Self {
         ProgramError::Custom(e as u32)
+    }
+}
