@@ -33,3 +33,13 @@ pub enum NeuroInstruction {
     UpdateMetadata { metadata_uri: String },
     /// 6. Transfer ownership. Accounts: [owner(signer), name_pda(w)]
     Transfer { new_owner: [u8; 32] },
+    /// 7. Renew. Accounts: [payer(signer,w), name_pda(w), config_pda, treasury(w), system_program]
+    Renew,
+}
+
+impl NeuroInstruction {
+    pub fn unpack(data: &[u8]) -> Result<Self, NeuroError> {
+        let (&tag, rest) = data.split_first().ok_or(NeuroError::InvalidInstruction)?;
+        Ok(match tag {
+            0 => NeuroInstruction::InitConfig(
+                InitConfigArgs::try_from_slice(rest).map_err(|_| NeuroError::InvalidInstruction)?,
