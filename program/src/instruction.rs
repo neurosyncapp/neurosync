@@ -63,3 +63,8 @@ impl NeuroInstruction {
             }
             6 => {
                 let new_owner = <[u8; 32]>::try_from_slice(rest)
+                    .map_err(|_| NeuroError::InvalidInstruction)?;
+                NeuroInstruction::Transfer { new_owner }
+            }
+            7 => NeuroInstruction::Renew,
+            _ => return Err(NeuroError::InvalidInstruction),
