@@ -23,3 +23,8 @@ pub fn process(program_id: &Pubkey, accounts: &[AccountInfo], data: &[u8]) -> Pr
     match NeuroInstruction::unpack(data)? {
         NeuroInstruction::InitConfig(args) => init_config(program_id, accounts, args, true),
         NeuroInstruction::UpdateConfig(args) => init_config(program_id, accounts, args, false),
+        NeuroInstruction::Register(args) => register(program_id, accounts, args),
+        NeuroInstruction::Heartbeat => heartbeat(program_id, accounts),
+        NeuroInstruction::UpdateResolver { resolver } => {
+            update_resolver(program_id, accounts, resolver)
+        }
