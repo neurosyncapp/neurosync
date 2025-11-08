@@ -13,3 +13,8 @@ use solana_program::{
     sysvar::Sysvar,
 };
 
+use crate::error::NeuroError;
+use crate::instruction::{InitConfigArgs, NeuroInstruction, RegisterArgs};
+use crate::state::{
+    Config, NameRecord, CONFIG_ACCOUNT_SPACE, MAX_LABEL_LEN, MAX_URI_LEN, NAME_ACCOUNT_SPACE,
+};
