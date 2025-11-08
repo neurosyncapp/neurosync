@@ -18,3 +18,8 @@ use crate::instruction::{InitConfigArgs, NeuroInstruction, RegisterArgs};
 use crate::state::{
     Config, NameRecord, CONFIG_ACCOUNT_SPACE, MAX_LABEL_LEN, MAX_URI_LEN, NAME_ACCOUNT_SPACE,
 };
+
+pub fn process(program_id: &Pubkey, accounts: &[AccountInfo], data: &[u8]) -> ProgramResult {
+    match NeuroInstruction::unpack(data)? {
+        NeuroInstruction::InitConfig(args) => init_config(program_id, accounts, args, true),
+        NeuroInstruction::UpdateConfig(args) => init_config(program_id, accounts, args, false),
