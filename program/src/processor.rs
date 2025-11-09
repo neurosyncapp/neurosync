@@ -38,3 +38,8 @@ pub fn process(program_id: &Pubkey, accounts: &[AccountInfo], data: &[u8]) -> Pr
 
 fn config_seeds(program_id: &Pubkey) -> (Pubkey, u8) {
     Pubkey::find_program_address(&[b"config"], program_id)
+}
+
+fn name_seeds(program_id: &Pubkey, label: &str) -> (Pubkey, u8) {
+    let h = hash(label.as_bytes());
+    Pubkey::find_program_address(&[b"name", h.as_ref()], program_id)
