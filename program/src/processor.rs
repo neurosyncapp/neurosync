@@ -48,3 +48,8 @@ fn name_seeds(program_id: &Pubkey, label: &str) -> (Pubkey, u8) {
 fn validate_label(label: &str) -> Result<(), NeuroError> {
     if label.is_empty() || label.len() > MAX_LABEL_LEN {
         return Err(NeuroError::InvalidLabel);
+    }
+    if !label
+        .bytes()
+        .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
+    {
