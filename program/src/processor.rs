@@ -53,3 +53,8 @@ fn validate_label(label: &str) -> Result<(), NeuroError> {
         .bytes()
         .all(|b| b.is_ascii_lowercase() || b.is_ascii_digit() || b == b'-')
     {
+        return Err(NeuroError::InvalidLabel);
+    }
+    Ok(())
+}
+
