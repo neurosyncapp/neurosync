@@ -58,3 +58,8 @@ fn validate_label(label: &str) -> Result<(), NeuroError> {
     Ok(())
 }
 
+fn init_config(
+    program_id: &Pubkey,
+    accounts: &[AccountInfo],
+    args: InitConfigArgs,
+    create: bool,
