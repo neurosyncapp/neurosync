@@ -73,3 +73,8 @@ fn init_config(
     }
     let (config_key, bump) = config_seeds(program_id);
     if config_key != *config_ai.key {
+        return Err(NeuroError::InvalidPda.into());
+    }
+
+    if create {
+        let system = next_account_info(it)?;
