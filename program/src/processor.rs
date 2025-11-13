@@ -63,3 +63,8 @@ fn init_config(
     accounts: &[AccountInfo],
     args: InitConfigArgs,
     create: bool,
+) -> ProgramResult {
+    let it = &mut accounts.iter();
+    let admin = next_account_info(it)?;
+    let config_ai = next_account_info(it)?;
+
