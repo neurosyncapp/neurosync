@@ -78,3 +78,8 @@ fn init_config(
 
     if create {
         let system = next_account_info(it)?;
+        if config_ai.data_is_empty() {
+            let rent = Rent::get()?;
+            let lamports = rent.minimum_balance(CONFIG_ACCOUNT_SPACE);
+            invoke_signed(
+                &system_instruction::create_account(
