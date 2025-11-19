@@ -83,3 +83,8 @@ fn init_config(
             let lamports = rent.minimum_balance(CONFIG_ACCOUNT_SPACE);
             invoke_signed(
                 &system_instruction::create_account(
+                    admin.key,
+                    config_ai.key,
+                    lamports,
+                    CONFIG_ACCOUNT_SPACE as u64,
+                    program_id,
