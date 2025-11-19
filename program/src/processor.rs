@@ -88,3 +88,8 @@ fn init_config(
                     lamports,
                     CONFIG_ACCOUNT_SPACE as u64,
                     program_id,
+                ),
+                &[admin.clone(), config_ai.clone(), system.clone()],
+                &[&[b"config", &[bump]]],
+            )?;
+        }
