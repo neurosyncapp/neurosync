@@ -103,3 +103,8 @@ fn init_config(
 
     let cfg = Config {
         admin: admin.key.to_bytes(),
+        treasury: args.treasury,
+        register_fee_lamports: args.register_fee_lamports,
+        renew_fee_lamports: args.renew_fee_lamports,
+        period_seconds: args.period_seconds,
+        bump,
