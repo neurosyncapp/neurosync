@@ -113,3 +113,8 @@ fn init_config(
     msg!("config set");
     Ok(())
 }
+
+fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -> ProgramResult {
+    let it = &mut accounts.iter();
+    let payer = next_account_info(it)?;
+    let name_ai = next_account_info(it)?;
