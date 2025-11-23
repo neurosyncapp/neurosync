@@ -128,3 +128,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
     validate_label(&args.label)?;
     if args.metadata_uri.len() > MAX_URI_LEN {
         return Err(NeuroError::InvalidUri.into());
+    }
+    if !name_ai.data_is_empty() {
+        return Err(NeuroError::AlreadyRegistered.into());
+    }
+
