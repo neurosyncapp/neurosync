@@ -138,3 +138,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
         return Err(NeuroError::InvalidPda.into());
     }
 
+    let (config_key, _) = config_seeds(program_id);
+    if config_key != *config_ai.key {
+        return Err(NeuroError::InvalidPda.into());
+    }
+    let cfg = Config::load(&config_ai.data.borrow()).ok_or(NeuroError::InvalidConfig)?;
