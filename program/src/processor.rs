@@ -153,3 +153,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
             &system_instruction::transfer(payer.key, treasury.key, cfg.register_fee_lamports),
             &[payer.clone(), treasury.clone(), system.clone()],
         )?;
+    }
+
+    // Create the name account (program-owned, fixed space).
+    let h = hash(args.label.as_bytes());
+    let rent = Rent::get()?;
