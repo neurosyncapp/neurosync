@@ -148,3 +148,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
     }
 
     // Collect the registration fee.
+    if cfg.register_fee_lamports > 0 {
+        invoke(
+            &system_instruction::transfer(payer.key, treasury.key, cfg.register_fee_lamports),
+            &[payer.clone(), treasury.clone(), system.clone()],
+        )?;
