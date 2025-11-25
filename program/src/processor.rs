@@ -143,3 +143,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
         return Err(NeuroError::InvalidPda.into());
     }
     let cfg = Config::load(&config_ai.data.borrow()).ok_or(NeuroError::InvalidConfig)?;
+    if cfg.treasury != treasury.key.to_bytes() {
+        return Err(NeuroError::InvalidTreasury.into());
+    }
+
+    // Collect the registration fee.
