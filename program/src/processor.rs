@@ -163,3 +163,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
         &system_instruction::create_account(
             payer.key,
             name_ai.key,
+            lamports,
+            NAME_ACCOUNT_SPACE as u64,
+            program_id,
+        ),
+        &[payer.clone(), name_ai.clone(), system.clone()],
