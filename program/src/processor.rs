@@ -173,3 +173,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
 
     let now = Clock::get()?.unix_timestamp;
     let expires_at = if cfg.period_seconds > 0 {
+        now + cfg.period_seconds
+    } else {
+        0
+    };
+    let record = NameRecord {
