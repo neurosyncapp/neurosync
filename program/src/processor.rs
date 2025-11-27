@@ -183,3 +183,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
         registered_at: now,
         expires_at,
         last_heartbeat: 0,
+        heartbeat_count: 0,
+        bump,
+        label: args.label,
+        metadata_uri: args.metadata_uri,
+    };
