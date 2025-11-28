@@ -188,3 +188,8 @@ fn register(program_id: &Pubkey, accounts: &[AccountInfo], args: RegisterArgs) -
         label: args.label,
         metadata_uri: args.metadata_uri,
     };
+    record.store(&mut name_ai.data.borrow_mut())?;
+    msg!("registered {}", record.label);
+    Ok(())
+}
+
