@@ -208,3 +208,8 @@ fn require_owner(name_ai: &AccountInfo, owner: &AccountInfo, program_id: &Pubkey
     if record.owner != owner.key.to_bytes() {
         return Err(NeuroError::NotOwner.into());
     }
+    Ok(record)
+}
+
+fn heartbeat(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
+    let it = &mut accounts.iter();
