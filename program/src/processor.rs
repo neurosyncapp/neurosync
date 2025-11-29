@@ -203,3 +203,8 @@ fn load_owned(name_ai: &AccountInfo, program_id: &Pubkey) -> Result<NameRecord, 
 fn require_owner(name_ai: &AccountInfo, owner: &AccountInfo, program_id: &Pubkey) -> Result<NameRecord, ProgramError> {
     if !owner.is_signer {
         return Err(NeuroError::MissingSignature.into());
+    }
+    let record = load_owned(name_ai, program_id)?;
+    if record.owner != owner.key.to_bytes() {
+        return Err(NeuroError::NotOwner.into());
+    }
