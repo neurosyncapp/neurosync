@@ -213,3 +213,8 @@ fn require_owner(name_ai: &AccountInfo, owner: &AccountInfo, program_id: &Pubkey
 
 fn heartbeat(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
     let it = &mut accounts.iter();
+    let owner = next_account_info(it)?;
+    let name_ai = next_account_info(it)?;
+    let mut record = require_owner(name_ai, owner, program_id)?;
+    record.last_heartbeat = Clock::get()?.unix_timestamp;
+    record.heartbeat_count = record.heartbeat_count.saturating_add(1);
