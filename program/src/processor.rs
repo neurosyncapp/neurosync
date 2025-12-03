@@ -228,3 +228,8 @@ fn update_resolver(program_id: &Pubkey, accounts: &[AccountInfo], resolver: [u8;
     let name_ai = next_account_info(it)?;
     let mut record = require_owner(name_ai, owner, program_id)?;
     record.resolver = resolver;
+    record.store(&mut name_ai.data.borrow_mut())?;
+    Ok(())
+}
+
+fn update_metadata(program_id: &Pubkey, accounts: &[AccountInfo], uri: String) -> ProgramResult {
