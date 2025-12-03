@@ -218,3 +218,8 @@ fn heartbeat(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
     let mut record = require_owner(name_ai, owner, program_id)?;
     record.last_heartbeat = Clock::get()?.unix_timestamp;
     record.heartbeat_count = record.heartbeat_count.saturating_add(1);
+    record.store(&mut name_ai.data.borrow_mut())?;
+    Ok(())
+}
+
+fn update_resolver(program_id: &Pubkey, accounts: &[AccountInfo], resolver: [u8; 32]) -> ProgramResult {
