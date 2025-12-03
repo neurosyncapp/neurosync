@@ -233,3 +233,8 @@ fn update_resolver(program_id: &Pubkey, accounts: &[AccountInfo], resolver: [u8;
 }
 
 fn update_metadata(program_id: &Pubkey, accounts: &[AccountInfo], uri: String) -> ProgramResult {
+    if uri.len() > MAX_URI_LEN {
+        return Err(NeuroError::InvalidUri.into());
+    }
+    let it = &mut accounts.iter();
+    let owner = next_account_info(it)?;
