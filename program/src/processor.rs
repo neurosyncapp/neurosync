@@ -223,3 +223,8 @@ fn heartbeat(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
 }
 
 fn update_resolver(program_id: &Pubkey, accounts: &[AccountInfo], resolver: [u8; 32]) -> ProgramResult {
+    let it = &mut accounts.iter();
+    let owner = next_account_info(it)?;
+    let name_ai = next_account_info(it)?;
+    let mut record = require_owner(name_ai, owner, program_id)?;
+    record.resolver = resolver;
