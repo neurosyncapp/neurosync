@@ -238,3 +238,8 @@ fn update_metadata(program_id: &Pubkey, accounts: &[AccountInfo], uri: String) -
     }
     let it = &mut accounts.iter();
     let owner = next_account_info(it)?;
+    let name_ai = next_account_info(it)?;
+    let mut record = require_owner(name_ai, owner, program_id)?;
+    record.metadata_uri = uri;
+    record.store(&mut name_ai.data.borrow_mut())?;
+    Ok(())
