@@ -253,3 +253,8 @@ fn transfer(program_id: &Pubkey, accounts: &[AccountInfo], new_owner: [u8; 32]) 
     record.owner = new_owner;
     record.store(&mut name_ai.data.borrow_mut())?;
     Ok(())
+}
+
+fn renew(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
+    let it = &mut accounts.iter();
+    let payer = next_account_info(it)?;
