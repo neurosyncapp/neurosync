@@ -258,3 +258,8 @@ fn transfer(program_id: &Pubkey, accounts: &[AccountInfo], new_owner: [u8; 32]) 
 fn renew(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
     let it = &mut accounts.iter();
     let payer = next_account_info(it)?;
+    let name_ai = next_account_info(it)?;
+    let config_ai = next_account_info(it)?;
+    let treasury = next_account_info(it)?;
+    let system = next_account_info(it)?;
+
