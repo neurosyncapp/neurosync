@@ -243,3 +243,8 @@ fn update_metadata(program_id: &Pubkey, accounts: &[AccountInfo], uri: String) -
     record.metadata_uri = uri;
     record.store(&mut name_ai.data.borrow_mut())?;
     Ok(())
+}
+
+fn transfer(program_id: &Pubkey, accounts: &[AccountInfo], new_owner: [u8; 32]) -> ProgramResult {
+    let it = &mut accounts.iter();
+    let owner = next_account_info(it)?;
