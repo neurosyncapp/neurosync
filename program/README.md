@@ -10,3 +10,7 @@ tracks live presence via on-chain heartbeats.
   heartbeat count, label, metadata URI.
 
 Account data is `[tag:u8][borsh struct]` where `tag` is `1` (config) or `2`
+(name). This layout is consumed verbatim by `api/src/indexer` and
+`web/src/lib/program.js`, change all three together.
+
+## Instructions
