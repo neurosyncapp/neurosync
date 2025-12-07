@@ -283,3 +283,8 @@ fn renew(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
         )?;
     }
     if cfg.period_seconds > 0 {
+        let now = Clock::get()?.unix_timestamp;
+        let base = if record.expires_at > now { record.expires_at } else { now };
+        record.expires_at = base + cfg.period_seconds;
+        record.store(&mut name_ai.data.borrow_mut())?;
+    }
