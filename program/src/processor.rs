@@ -263,3 +263,8 @@ fn renew(program_id: &Pubkey, accounts: &[AccountInfo]) -> ProgramResult {
     let treasury = next_account_info(it)?;
     let system = next_account_info(it)?;
 
+    if !payer.is_signer {
+        return Err(NeuroError::MissingSignature.into());
+    }
+    let (config_key, _) = config_seeds(program_id);
+    if config_key != *config_ai.key {
