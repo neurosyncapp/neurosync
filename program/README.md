@@ -18,3 +18,7 @@ Account data is `[tag:u8][borsh struct]` where `tag` is `1` (config) or `2`
 | Tag | Name | Accounts |
 |-----|------|----------|
 | 0 | InitConfig | admin(s,w), config(w), system |
+| 1 | UpdateConfig | admin(s), config(w) |
+| 2 | Register | payer(s,w), name(w), config, treasury(w), system |
+| 3 | Heartbeat | owner(s), name(w) |
+| 4 | UpdateResolver | owner(s), name(w) |
