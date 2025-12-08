@@ -54,3 +54,7 @@ node admin.mjs init-config \
   --treasury <TREASURY_PUBKEY> \
   --fee 0.05 --renew 0.05 --period 0     # period 0 = permanent
 ```
+
+## Wire into the stack
+
+Set on the server in `/root/neurosync/.env`, then `docker compose restart api`:
