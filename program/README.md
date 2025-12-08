@@ -50,3 +50,7 @@ cd ../scripts && npm install
 node admin.mjs init-config \
   --rpc https://api.mainnet-beta.solana.com \
   --keypair ~/.config/solana/id.json \
+  --program <PROGRAM_ID> \
+  --treasury <TREASURY_PUBKEY> \
+  --fee 0.05 --renew 0.05 --period 0     # period 0 = permanent
+```
