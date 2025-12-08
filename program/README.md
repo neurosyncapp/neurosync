@@ -30,3 +30,7 @@ Account data is `[tag:u8][borsh struct]` where `tag` is `1` (config) or `2`
 
 Requires the Solana toolchain (`solana-install`) and Rust.
 
+```bash
+cd program
+cargo build-sbf            # outputs target/deploy/neurosync_program.so
+```
