@@ -38,3 +38,7 @@ cargo build-sbf            # outputs target/deploy/neurosync_program.so
 ## Deploy (mainnet)
 
 ```bash
+solana config set --url https://api.mainnet-beta.solana.com
+solana program deploy target/deploy/neurosync_program.so
+# note the printed Program Id
+```
