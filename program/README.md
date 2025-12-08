@@ -42,3 +42,7 @@ solana config set --url https://api.mainnet-beta.solana.com
 solana program deploy target/deploy/neurosync_program.so
 # note the printed Program Id
 ```
+
+## Initialise config
+
+```bash
