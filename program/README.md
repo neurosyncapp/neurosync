@@ -58,3 +58,7 @@ node admin.mjs init-config \
 ## Wire into the stack
 
 Set on the server in `/root/neurosync/.env`, then `docker compose restart api`:
+
+```
+PROGRAM_ID=<PROGRAM_ID>
+TREASURY=<TREASURY_PUBKEY>
