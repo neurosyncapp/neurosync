@@ -13,3 +13,10 @@
     "outDir": "./dist",
     "baseUrl": "./",
     "skipLibCheck": true,
+    "strict": false,
+    "strictNullChecks": false,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
