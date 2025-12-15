@@ -13,3 +13,13 @@ export const CONFIG = {
   twitter: process.env.TWITTER_URL || 'https://x.com/neurosync',
 };
 
+export function publicConfig() {
+  return {
+    programId: CONFIG.programId,
+    network: CONFIG.network,
+    suffix: CONFIG.suffix,
+    treasury: CONFIG.treasury,
+    registerFeeSol: CONFIG.registerFeeSol,
+    twitter: CONFIG.twitter,
+    rpc: '/api/rpc',
+  };
