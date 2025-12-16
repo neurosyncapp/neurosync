@@ -8,3 +8,13 @@ export class DbService implements OnModuleInit {
   pool: Pool;
 
   async onModuleInit() {
+    this.pool = new Pool({ connectionString: CONFIG.databaseUrl, max: 8 });
+    await this.waitForDb();
+    await this.migrate();
+    this.log.log('Database ready');
+  }
+
+  private async waitForDb() {
+    for (let i = 0; i < 30; i++) {
+      try {
+        await this.pool.query('SELECT 1');
