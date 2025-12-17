@@ -18,3 +18,13 @@ export class DbService implements OnModuleInit {
     for (let i = 0; i < 30; i++) {
       try {
         await this.pool.query('SELECT 1');
+        return;
+      } catch {
+        await new Promise((r) => setTimeout(r, 2000));
+      }
+    }
+    throw new Error('Database not reachable');
+  }
+
+  private async migrate() {
+    await this.pool.query(`
