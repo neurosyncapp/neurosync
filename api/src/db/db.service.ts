@@ -28,3 +28,13 @@ export class DbService implements OnModuleInit {
 
   private async migrate() {
     await this.pool.query(`
+      CREATE TABLE IF NOT EXISTS agents (
+        name            TEXT PRIMARY KEY,
+        pda             TEXT,
+        owner           TEXT NOT NULL,
+        resolver        TEXT,
+        metadata_uri    TEXT,
+        category        TEXT,
+        capabilities    JSONB,
+        registered_at   TIMESTAMPTZ,
+        expires_at      TIMESTAMPTZ,
