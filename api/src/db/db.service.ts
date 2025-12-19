@@ -68,3 +68,4 @@ export class DbService implements OnModuleInit {
   query(text: string, params?: any[]) {
     return this.pool.query(text, params);
   }
+}
