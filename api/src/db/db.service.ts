@@ -58,3 +58,13 @@ export class DbService implements OnModuleInit {
         name    TEXT NOT NULL,
         owner   TEXT,
         to_addr TEXT,
+        tx      TEXT,
+        ts      TIMESTAMPTZ DEFAULT now()
+      );
+      CREATE INDEX IF NOT EXISTS idx_events_ts ON events(ts DESC);
+    `);
+  }
+
+  query(text: string, params?: any[]) {
+    return this.pool.query(text, params);
+  }
