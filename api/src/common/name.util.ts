@@ -13,3 +13,8 @@ export function normalizeName(raw: string): string {
 
 export function isValidName(name: string): boolean {
   return VALID.test(name);
+}
+
+export function labelHash(label: string): Buffer {
+  return createHash('sha256').update(Buffer.from(label, 'utf8')).digest();
+}
