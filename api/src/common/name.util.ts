@@ -8,3 +8,8 @@ export function normalizeName(raw: string): string {
     .trim()
     .toLowerCase()
     .replace(/\.agent$/, '')
+    .replace(/[^a-z0-9-]/g, '');
+}
+
+export function isValidName(name: string): boolean {
+  return VALID.test(name);
