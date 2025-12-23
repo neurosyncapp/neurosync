@@ -28,3 +28,7 @@ export function nametPda(programId: PublicKey, label: string): PublicKey {
   return pda;
 }
 
+export function configPda(programId: PublicKey): PublicKey {
+  const [pda] = PublicKey.findProgramAddressSync([Buffer.from('config')], programId);
+  return pda;
+}
