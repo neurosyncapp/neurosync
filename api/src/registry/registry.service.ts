@@ -13,3 +13,8 @@ export interface AgentRow {
   registered_at: string;
   expires_at: string;
   last_seen: string;
+  last_chain_beat: string;
+  heartbeat_count: string;
+  reputation: number;
+}
+
