@@ -18,3 +18,8 @@ export interface AgentRow {
   reputation: number;
 }
 
+@Injectable()
+export class RegistryService {
+  constructor(private db: DbService) {}
+
+  // ---- reputation ----
