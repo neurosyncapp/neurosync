@@ -23,3 +23,8 @@ export class RegistryService {
   constructor(private db: DbService) {}
 
   // ---- reputation ----
+  computeReputation(opts: {
+    registeredAt?: Date;
+    heartbeatCount?: number;
+    lastSeen?: Date;
+  }): number {
