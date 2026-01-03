@@ -38,3 +38,8 @@ export class RegistryService {
       if (dt < CONFIG.onlineWindowMs) recency = 1;
       else if (dt < 3600000) recency = 0.6;
       else if (dt < 86400000) recency = 0.3;
+    }
+    const score = age * 35 + beats * 35 + recency * 30;
+    return Math.round(Math.max(0, Math.min(100, score)));
+  }
+
