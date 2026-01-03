@@ -43,3 +43,8 @@ export class RegistryService {
     return Math.round(Math.max(0, Math.min(100, score)));
   }
 
+  // ---- writes (indexer + heartbeat) ----
+  async upsertFromChain(a: {
+    name: string;
+    pda: string;
+    owner: string;
