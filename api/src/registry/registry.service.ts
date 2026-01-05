@@ -58,3 +58,8 @@ export class RegistryService {
     const lastSeen = a.lastChainBeat;
     const reputation = this.computeReputation({
       registeredAt: a.registeredAt,
+      heartbeatCount: a.heartbeatCount,
+      lastSeen,
+    });
+    await this.db.query(
+      `INSERT INTO agents (name, pda, owner, resolver, metadata_uri, registered_at, expires_at, last_chain_beat, last_seen, heartbeat_count, reputation, updated_at)
