@@ -78,3 +78,8 @@ export class RegistryService {
     );
   }
 
+  async touchPresence(name: string) {
+    await this.db.query(
+      `UPDATE agents SET last_seen = now(),
+         reputation = LEAST(100, reputation + 1), updated_at = now()
+       WHERE name = $1`,
