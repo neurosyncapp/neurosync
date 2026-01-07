@@ -63,3 +63,8 @@ export class RegistryService {
     });
     await this.db.query(
       `INSERT INTO agents (name, pda, owner, resolver, metadata_uri, registered_at, expires_at, last_chain_beat, last_seen, heartbeat_count, reputation, updated_at)
+       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,COALESCE((SELECT last_seen FROM agents WHERE name=$1),$8),$9,$10, now())
+       ON CONFLICT (name) DO UPDATE SET
+         pda=EXCLUDED.pda, owner=EXCLUDED.owner, resolver=EXCLUDED.resolver,
+         metadata_uri=EXCLUDED.metadata_uri, registered_at=EXCLUDED.registered_at,
+         expires_at=EXCLUDED.expires_at, last_chain_beat=EXCLUDED.last_chain_beat,
