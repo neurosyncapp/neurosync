@@ -68,3 +68,8 @@ export class RegistryService {
          pda=EXCLUDED.pda, owner=EXCLUDED.owner, resolver=EXCLUDED.resolver,
          metadata_uri=EXCLUDED.metadata_uri, registered_at=EXCLUDED.registered_at,
          expires_at=EXCLUDED.expires_at, last_chain_beat=EXCLUDED.last_chain_beat,
+         last_seen=GREATEST(agents.last_seen, EXCLUDED.last_chain_beat),
+         heartbeat_count=GREATEST(agents.heartbeat_count, EXCLUDED.heartbeat_count),
+         reputation=EXCLUDED.reputation, updated_at=now()`,
+      [
+        a.name, a.pda, a.owner, a.resolver, a.metadataUri,
