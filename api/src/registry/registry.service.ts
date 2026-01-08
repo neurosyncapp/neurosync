@@ -88,3 +88,8 @@ export class RegistryService {
   }
 
   async recordEvent(type: string, name: string, owner?: string, tx?: string, to?: string) {
+    await this.db.query(
+      `INSERT INTO events (type, name, owner, to_addr, tx) VALUES ($1,$2,$3,$4,$5)`,
+      [type, name, owner || null, to || null, tx || null],
+    );
+  }
