@@ -93,3 +93,8 @@ export class RegistryService {
       [type, name, owner || null, to || null, tx || null],
     );
   }
+
+  async getOwner(name: string): Promise<string | null> {
+    const r = await this.db.query(`SELECT owner FROM agents WHERE name=$1`, [name]);
+    return r.rows[0]?.owner || null;
+  }
