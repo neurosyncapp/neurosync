@@ -103,3 +103,8 @@ export class RegistryService {
   async availability(raw: string) {
     const name = normalizeName(raw);
     if (!isValidName(name)) return { name: raw, normalized: name, available: false, invalid: true };
+    const r = await this.db.query(`SELECT 1 FROM agents WHERE name=$1`, [name]);
+    return { name: raw, normalized: name, available: r.rowCount === 0 };
+  }
+
+  async explore(params: { q?: string; sort?: string; filter?: string; limit?: number }) {
