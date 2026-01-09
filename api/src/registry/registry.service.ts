@@ -98,3 +98,8 @@ export class RegistryService {
     const r = await this.db.query(`SELECT owner FROM agents WHERE name=$1`, [name]);
     return r.rows[0]?.owner || null;
   }
+
+  // ---- reads ----
+  async availability(raw: string) {
+    const name = normalizeName(raw);
+    if (!isValidName(name)) return { name: raw, normalized: name, available: false, invalid: true };
