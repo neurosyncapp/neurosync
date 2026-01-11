@@ -123,3 +123,8 @@ export class RegistryService {
       params.sort === 'recent'
         ? 'registered_at DESC NULLS LAST'
         : params.sort === 'active'
+          ? 'last_seen DESC NULLS LAST'
+          : 'reputation DESC, registered_at DESC';
+    args.push(limit);
+    const sql = `SELECT name, owner, category, reputation, last_seen
+                 FROM agents ${where.length ? 'WHERE ' + where.join(' AND ') : ''}
