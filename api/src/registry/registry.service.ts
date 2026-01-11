@@ -138,3 +138,8 @@ export class RegistryService {
       lastSeen: row.last_seen,
     }));
     return { items, total: items.length };
+  }
+
+  async getAgent(raw: string) {
+    const name = normalizeName(raw);
+    const r = await this.db.query(`SELECT * FROM agents WHERE name=$1`, [name]);
