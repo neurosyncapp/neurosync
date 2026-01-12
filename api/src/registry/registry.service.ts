@@ -143,3 +143,8 @@ export class RegistryService {
   async getAgent(raw: string) {
     const name = normalizeName(raw);
     const r = await this.db.query(`SELECT * FROM agents WHERE name=$1`, [name]);
+    const row = r.rows[0];
+    if (!row) return null;
+
+    let capabilities = row.capabilities || [];
+    let category = row.category || null;
