@@ -163,3 +163,8 @@ export class RegistryService {
           website: manifest.website || manifest.url || null,
           endpoint: manifest.endpoint || null,
         };
+        await this.db.query(
+          `UPDATE agents SET capabilities=$2, category=$3, description=$4, links=$5 WHERE name=$1`,
+          [name, JSON.stringify(capabilities), category, description, JSON.stringify(links)],
+        );
+      }
