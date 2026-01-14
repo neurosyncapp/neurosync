@@ -158,3 +158,8 @@ export class RegistryService {
         category = manifest.category || category;
         description = manifest.description || description;
         links = {
+          twitter: manifest.twitter || manifest.x || null,
+          github: manifest.github || null,
+          website: manifest.website || manifest.url || null,
+          endpoint: manifest.endpoint || null,
+        };
