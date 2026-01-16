@@ -188,3 +188,8 @@ export class RegistryService {
   }
 
   async resolve(raw: string) {
+    const a = await this.getAgent(raw);
+    if (!a) return null;
+    return { name: a.name, owner: a.owner, resolver: a.resolver, metadataUri: a.metadataUri };
+  }
+
