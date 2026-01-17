@@ -208,3 +208,8 @@ export class RegistryService {
     );
     return { wallet, names: r.rows };
   }
+
+  async stats() {
+    const total = await this.db.query(`SELECT count(*)::int c FROM agents`);
+    const online = await this.db.query(
+      `SELECT count(*)::int c FROM agents WHERE last_seen > now() - ($1 || ' milliseconds')::interval`,
