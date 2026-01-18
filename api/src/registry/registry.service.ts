@@ -228,3 +228,8 @@ export class RegistryService {
   async activity(limit: number) {
     const r = await this.db.query(
       `SELECT e.type, e.name, e.owner, e.to_addr, e.tx, e.ts
+       FROM events e ORDER BY e.ts DESC LIMIT $1`,
+      [Math.min(limit || 40, 100)],
+    );
+    return {
+      items: r.rows.map((row) => ({
