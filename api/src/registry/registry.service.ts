@@ -243,3 +243,8 @@ export class RegistryService {
     };
   }
 
+  private async fetchManifest(uri: string): Promise<any | null> {
+    try {
+      const url = uri.startsWith('ipfs://')
+        ? uri.replace('ipfs://', 'https://ipfs.io/ipfs/')
+        : uri;
