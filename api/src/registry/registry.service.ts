@@ -233,3 +233,8 @@ export class RegistryService {
     );
     return {
       items: r.rows.map((row) => ({
+        type: row.type,
+        name: row.name,
+        owner: row.owner,
+        to: row.to_addr,
+        tx: row.tx,
