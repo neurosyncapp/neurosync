@@ -238,3 +238,8 @@ export class RegistryService {
         owner: row.owner,
         to: row.to_addr,
         tx: row.tx,
+        ts: row.ts,
+      })),
+    };
+  }
+
