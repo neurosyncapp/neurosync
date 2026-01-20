@@ -3,3 +3,8 @@ import { RegistryService } from './registry.service';
 
 @Controller()
 export class RegistryController {
+  constructor(private registry: RegistryService) {}
+
+  @Get('availability')
+  availability(@Query('name') name: string) {
+    return this.registry.availability(name || '');
