@@ -8,3 +8,8 @@ export class RegistryController {
   @Get('availability')
   availability(@Query('name') name: string) {
     return this.registry.availability(name || '');
+  }
+
+  @Get('explore')
+  explore(
+    @Query('q') q: string,
