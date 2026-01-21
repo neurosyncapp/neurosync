@@ -23,3 +23,8 @@ export class RegistryController {
   @Get('stats')
   stats() {
     return this.registry.stats();
+  }
+
+  @Get('activity')
+  activity(@Query('limit') limit: string) {
+    return this.registry.activity(Number(limit) || 40);
