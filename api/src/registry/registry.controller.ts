@@ -33,3 +33,8 @@ export class RegistryController {
   @Get('resolve/:name')
   async resolve(@Param('name') name: string) {
     const r = await this.registry.resolve(name);
+    if (!r) throw new NotFoundException('Name not registered');
+    return r;
+  }
+
+  @Get('reverse/:wallet')
