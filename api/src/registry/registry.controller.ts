@@ -38,3 +38,8 @@ export class RegistryController {
   }
 
   @Get('reverse/:wallet')
+  reverse(@Param('wallet') wallet: string) {
+    return this.registry.reverse(wallet);
+  }
+
+  @Get('names/:wallet')
