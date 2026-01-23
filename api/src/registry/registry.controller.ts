@@ -53,3 +53,4 @@ export class RegistryController {
     if (!a) throw new NotFoundException('Name not registered');
     return a;
   }
+}
