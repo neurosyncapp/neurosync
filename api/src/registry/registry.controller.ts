@@ -48,3 +48,8 @@ export class RegistryController {
   }
 
   @Get('agent/:name')
+  async agent(@Param('name') name: string) {
+    const a = await this.registry.getAgent(name);
+    if (!a) throw new NotFoundException('Name not registered');
+    return a;
+  }
