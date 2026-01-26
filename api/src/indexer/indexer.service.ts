@@ -13,3 +13,8 @@ function decodeNameRecord(data: Buffer) {
   const owner = new PublicKey(data.subarray(o, o + 32)); o += 32;
   const resolver = new PublicKey(data.subarray(o, o + 32)); o += 32;
   const registeredAt = Number(data.readBigInt64LE(o)); o += 8;
+  const expiresAt = Number(data.readBigInt64LE(o)); o += 8;
+  const lastBeat = Number(data.readBigInt64LE(o)); o += 8;
+  const heartbeatCount = Number(data.readBigUInt64LE(o)); o += 8;
+  o += 1; // bump
+  const labelLen = data.readUInt32LE(o); o += 4;
