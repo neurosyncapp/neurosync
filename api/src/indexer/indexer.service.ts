@@ -23,3 +23,8 @@ function decodeNameRecord(data: Buffer) {
   if (o + 4 <= data.length) {
     const mLen = data.readUInt32LE(o); o += 4;
     metadataUri = data.subarray(o, o + mLen).toString('utf8');
+  }
+  return {
+    owner: owner.toBase58(),
+    resolver: resolver.toBase58(),
+    registeredAt,
