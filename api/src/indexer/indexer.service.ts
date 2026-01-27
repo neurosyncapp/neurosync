@@ -33,3 +33,8 @@ function decodeNameRecord(data: Buffer) {
     heartbeatCount,
     label,
     metadataUri,
+  };
+}
+
+@Injectable()
+export class IndexerService implements OnModuleInit {
