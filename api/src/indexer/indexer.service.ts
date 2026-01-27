@@ -28,3 +28,8 @@ function decodeNameRecord(data: Buffer) {
     owner: owner.toBase58(),
     resolver: resolver.toBase58(),
     registeredAt,
+    expiresAt,
+    lastBeat,
+    heartbeatCount,
+    label,
+    metadataUri,
