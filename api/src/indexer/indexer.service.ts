@@ -38,3 +38,8 @@ function decodeNameRecord(data: Buffer) {
 
 @Injectable()
 export class IndexerService implements OnModuleInit {
+  private readonly log = new Logger('Indexer');
+  private conn: Connection;
+  private knownNames = new Set<string>();
+  private beatCounts = new Map<string, number>();
+  private running = false;
