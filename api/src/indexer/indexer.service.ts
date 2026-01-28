@@ -53,3 +53,8 @@ export class IndexerService implements OnModuleInit {
     }
     this.conn = new Connection(CONFIG.solanaRpc, 'confirmed');
     // Seed known-names so we do not emit REGISTER for pre-existing rows on boot.
+    const existing = await this.db.query('SELECT name, heartbeat_count FROM agents');
+    for (const r of existing.rows) {
+      this.knownNames.add(r.name);
+      this.beatCounts.set(r.name, Number(r.heartbeat_count || 0));
+    }
