@@ -43,3 +43,8 @@ export class IndexerService implements OnModuleInit {
   private knownNames = new Set<string>();
   private beatCounts = new Map<string, number>();
   private running = false;
+
+  constructor(private db: DbService, private registry: RegistryService) {}
+
+  async onModuleInit() {
+    if (!CONFIG.programId) {
