@@ -63,3 +63,8 @@ export class IndexerService implements OnModuleInit {
   }
 
   private loop() {
+    const tick = async () => {
+      try {
+        await this.indexOnce();
+      } catch (e) {
+        this.log.error(`index error: ${e.message}`);
