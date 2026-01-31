@@ -68,3 +68,8 @@ export class IndexerService implements OnModuleInit {
         await this.indexOnce();
       } catch (e) {
         this.log.error(`index error: ${e.message}`);
+      } finally {
+        setTimeout(tick, CONFIG.indexIntervalMs);
+      }
+    };
+    tick();
