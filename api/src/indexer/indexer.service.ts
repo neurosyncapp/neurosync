@@ -83,3 +83,8 @@ export class IndexerService implements OnModuleInit {
       const accounts = await this.conn.getProgramAccounts(programId, { commitment: 'confirmed' });
       for (const { pubkey, account } of accounts) {
         const rec = decodeNameRecord(account.data as Buffer);
+        if (!rec || !rec.label) continue;
+        const name = rec.label;
+
+        await this.registry.upsertFromChain({
+          name,
