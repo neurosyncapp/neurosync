@@ -73,3 +73,8 @@ export class IndexerService implements OnModuleInit {
       }
     };
     tick();
+  }
+
+  async indexOnce() {
+    if (this.running) return;
+    this.running = true;
