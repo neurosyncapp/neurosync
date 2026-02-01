@@ -103,3 +103,8 @@ export class IndexerService implements OnModuleInit {
           await this.registry.recordEvent('REGISTER', name, rec.owner);
         }
         const prevBeat = this.beatCounts.get(name) ?? 0;
+        if (rec.heartbeatCount > prevBeat) {
+          this.beatCounts.set(name, rec.heartbeatCount);
+          if (prevBeat > 0) await this.registry.recordEvent('HEARTBEAT', name, rec.owner);
+        }
+      }
