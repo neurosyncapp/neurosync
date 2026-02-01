@@ -93,3 +93,8 @@ export class IndexerService implements OnModuleInit {
           resolver: rec.resolver,
           metadataUri: rec.metadataUri,
           registeredAt: new Date(rec.registeredAt * 1000),
+          expiresAt: rec.expiresAt ? new Date(rec.expiresAt * 1000) : null,
+          lastChainBeat: rec.lastBeat ? new Date(rec.lastBeat * 1000) : null,
+          heartbeatCount: rec.heartbeatCount,
+        });
+
