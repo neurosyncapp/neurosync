@@ -88,3 +88,8 @@ export class IndexerService implements OnModuleInit {
 
         await this.registry.upsertFromChain({
           name,
+          pda: pubkey.toBase58(),
+          owner: rec.owner,
+          resolver: rec.resolver,
+          metadataUri: rec.metadataUri,
+          registeredAt: new Date(rec.registeredAt * 1000),
