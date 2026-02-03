@@ -13,3 +13,8 @@ import { normalizeName } from '../common/name.util';
 export class HeartbeatController {
   constructor(private registry: RegistryService) {}
 
+  @Post('heartbeat')
+  async heartbeat(@Body() body: { name?: string; owner?: string; timestamp?: number; signature?: string }) {
+    const name = normalizeName(body?.name || '');
+    const { owner, timestamp, signature } = body || {};
+    if (!name || !owner || !timestamp || !signature) {
