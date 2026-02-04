@@ -18,3 +18,8 @@ export class HeartbeatController {
     const name = normalizeName(body?.name || '');
     const { owner, timestamp, signature } = body || {};
     if (!name || !owner || !timestamp || !signature) {
+      throw new BadRequestException('Missing fields');
+    }
+
+    // Reject stale / future timestamps (replay protection, 2-minute window).
+    const skew = Math.abs(Date.now() - Number(timestamp));
