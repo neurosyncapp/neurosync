@@ -33,3 +33,8 @@ export class HeartbeatController {
 
     const message = `neurosync:heartbeat:${name}:${timestamp}`;
     let ok = false;
+    try {
+      ok = nacl.sign.detached.verify(
+        new TextEncoder().encode(message),
+        bs58.decode(signature),
+        new PublicKey(owner).toBytes(),
