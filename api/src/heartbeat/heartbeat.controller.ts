@@ -23,3 +23,8 @@ export class HeartbeatController {
 
     // Reject stale / future timestamps (replay protection, 2-minute window).
     const skew = Math.abs(Date.now() - Number(timestamp));
+    if (!Number.isFinite(skew) || skew > 120000) {
+      throw new BadRequestException('Stale timestamp');
+    }
+
+    const dbOwner = await this.registry.getOwner(name);
