@@ -23,3 +23,4 @@ export class RpcController {
       throw new HttpException('RPC upstream error', 502);
     }
   }
+}
