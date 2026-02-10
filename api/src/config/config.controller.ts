@@ -8,3 +8,8 @@ export class ConfigController {
     return publicConfig();
   }
 
+  @Get('health')
+  health() {
+    return { ok: true };
+  }
+}
