@@ -18,3 +18,15 @@ import { leaderboardPage } from './pages/leaderboard.js';
 document.body.prepend(createNavbar());
 
 route('/', landingPage);
+route('/explore', explorePage);
+route('/leaderboard', leaderboardPage);
+route('/agent/:name', agentPage);
+route('/register', registerPage);
+route('/activity', activityPage);
+// /docs lives on its own subdomain, redirect any in-app hit (nginx also 301s).
+route('/docs', () => { window.location.href = 'https://docs.neuro-sync.app'; });
+
+// Load runtime config + restore wallet before first paint, then start.
+Promise.allSettled([loadConfig(), walletService.autoConnect()]).then(() => {
+  initRouter();
+});
