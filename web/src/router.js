@@ -43,3 +43,18 @@ export function render() {
   if (typeof currentCleanup === 'function') {
     currentCleanup();
     currentCleanup = null;
+  }
+
+  const hit = match(path) || match('/');
+  window.scrollTo(0, 0);
+  if (hit) currentCleanup = hit.handler(app, hit.params || {});
+}
+
+export function initRouter() {
+  window.addEventListener('popstate', render);
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[data-link]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (!href || href.startsWith('http') || link.target === '_blank') return;
+    e.preventDefault();
