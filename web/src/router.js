@@ -28,3 +28,18 @@ function match(path) {
     }
   }
   return null;
+}
+
+export function navigate(path) {
+  if (window.location.pathname === path) return;
+  window.history.pushState({}, '', path);
+  render();
+}
+
+export function render() {
+  const path = window.location.pathname;
+  const app = document.getElementById('app');
+
+  if (typeof currentCleanup === 'function') {
+    currentCleanup();
+    currentCleanup = null;
