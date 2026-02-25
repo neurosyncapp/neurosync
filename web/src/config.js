@@ -8,3 +8,18 @@ const FALLBACK = {
   suffix: '.agent',
   rpc: '/api/rpc',          // RPC is proxied so the Helius key stays server-side
   registerFeeSol: 0.05,     // display default; authoritative value comes from API
+  treasury: '',
+  twitter: 'https://x.com/neurosync',
+  links: {},
+};
+
+let cache = null;
+
+export async function loadConfig() {
+  if (cache) return cache;
+  try {
+    const res = await fetch('/api/config');
+    if (res.ok) {
+      cache = { ...FALLBACK, ...(await res.json()) };
+      return cache;
+    }
