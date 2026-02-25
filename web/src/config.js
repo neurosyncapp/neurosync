@@ -23,3 +23,15 @@ export async function loadConfig() {
       cache = { ...FALLBACK, ...(await res.json()) };
       return cache;
     }
+  } catch (_) {
+    /* fall through to defaults */
+  }
+  cache = { ...FALLBACK };
+  return cache;
+}
+
+export function getConfig() {
+  return cache || FALLBACK;
+}
+
+export const SUFFIX = FALLBACK.suffix;
