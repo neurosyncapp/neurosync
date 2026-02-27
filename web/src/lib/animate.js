@@ -13,3 +13,18 @@ export function mountReveals(root = document, { stagger = 0 } = {}) {
 
   if (stagger) {
     els.forEach((el, i) => {
+      if (!el.dataset.delay) el.dataset.delay = String(i * stagger);
+    });
+  }
+
+  const reveal = (el) => {
+    const d = el.dataset.delay;
+    if (d) el.style.transitionDelay = `${d}ms`;
+    el.classList.add('in');
+  };
+
+  if (typeof IntersectionObserver === 'undefined') {
+    els.forEach(reveal);
+    return { disconnect() {} };
+  }
+
