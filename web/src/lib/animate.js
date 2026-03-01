@@ -28,3 +28,18 @@ export function mountReveals(root = document, { stagger = 0 } = {}) {
     return { disconnect() {} };
   }
 
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        reveal(e.target);
+        io.unobserve(e.target);
+      });
+    },
+    { threshold: 0, rootMargin: '0px 0px -12% 0px' }
+  );
+
+  // Paint the hidden (opacity:0) state for at least one frame before observing,
+  // otherwise the browser can coalesce the change and skip the transition for
+  // elements that are already on screen at load.
+  requestAnimationFrame(() =>
