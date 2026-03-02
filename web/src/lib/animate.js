@@ -58,3 +58,18 @@ export function createRevealer() {
   return {
     mount(root = document, opts = {}) {
       ios.push(mountReveals(root, opts));
+    },
+    destroy() {
+      ios.forEach((io) => io.disconnect && io.disconnect());
+      ios.length = 0;
+    },
+  };
+}
+
+// Apply a staggered `.pop` entrance to freshly rendered list items.
+export function popIn(elements, step = 45) {
+  Array.from(elements).forEach((el, i) => {
+    el.classList.add('pop');
+    el.style.animationDelay = `${i * step}ms`;
+    el.addEventListener(
+      'animationend',
