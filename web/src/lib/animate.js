@@ -73,3 +73,11 @@ export function popIn(elements, step = 45) {
     el.style.animationDelay = `${i * step}ms`;
     el.addEventListener(
       'animationend',
+      () => {
+        el.classList.remove('pop');
+        el.style.animationDelay = '';
+      },
+      { once: true }
+    );
+  });
+}
