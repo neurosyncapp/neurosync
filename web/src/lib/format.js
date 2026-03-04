@@ -48,3 +48,4 @@ export function normalizeName(raw) {
     .toLowerCase()
     .replace(/\.agent$/, '')
     .replace(/[^a-z0-9-]/g, '');
+}
