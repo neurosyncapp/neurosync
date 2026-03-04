@@ -33,3 +33,18 @@ export function repColor(score) {
 
 export function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[c]));
+}
+
+// Normalize a handle to its bare label (no suffix, lowercase, trimmed).
+export function normalizeName(raw) {
+  return String(raw || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\.agent$/, '')
+    .replace(/[^a-z0-9-]/g, '');
