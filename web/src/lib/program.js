@@ -23,3 +23,18 @@ async function sha256(bytes) {
   return new Uint8Array(digest);
 }
 
+function borshString(str) {
+  const utf8 = Buffer.from(str, 'utf8');
+  const len = Buffer.alloc(4);
+  len.writeUInt32LE(utf8.length, 0);
+  return Buffer.concat([len, utf8]);
+}
+
+export function deriveConfigPda() {
+  return PublicKey.findProgramAddressSync([Buffer.from('config')], programId());
+}
+
+// seeds = ["name", sha256(label)], sha256 keeps every seed within the 32-byte limit.
+export async function deriveNamePda(label) {
+  const hash = await sha256(new TextEncoder().encode(label));
+  return PublicKey.findProgramAddressSync([Buffer.from('name'), Buffer.from(hash)], programId());
