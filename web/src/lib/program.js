@@ -53,3 +53,18 @@ export async function buildRegisterIx({ payer, label, metadataUri = '', resolver
     borshString(label),
     borshString(metadataUri),
     resolverKey.toBuffer(),
+  ]);
+
+  return new TransactionInstruction({
+    programId: pid,
+    keys: [
+      { pubkey: new PublicKey(payer), isSigner: true, isWritable: true },
+      { pubkey: namePda, isSigner: false, isWritable: true },
+      { pubkey: configPda, isSigner: false, isWritable: false },
+      { pubkey: treasury, isSigner: false, isWritable: true },
+      { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
+    ],
+    data,
+  });
+}
+
