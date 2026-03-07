@@ -83,3 +83,9 @@ export async function buildHeartbeatIx({ owner, label }) {
 // Assemble a ready-to-send transaction (blockhash + feePayer filled by caller/adapter).
 export async function buildRegisterTx(opts, connection) {
   const ix = await buildRegisterIx(opts);
+  const tx = new Transaction().add(ix);
+  tx.feePayer = new PublicKey(opts.payer);
+  const { blockhash } = await connection.getLatestBlockhash('confirmed');
+  tx.recentBlockhash = blockhash;
+  return tx;
+}
