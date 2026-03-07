@@ -68,3 +68,18 @@ export async function buildRegisterIx({ payer, label, metadataUri = '', resolver
   });
 }
 
+export async function buildHeartbeatIx({ owner, label }) {
+  const [namePda] = await deriveNamePda(label);
+  return new TransactionInstruction({
+    programId: programId(),
+    keys: [
+      { pubkey: new PublicKey(owner), isSigner: true, isWritable: false },
+      { pubkey: namePda, isSigner: false, isWritable: true },
+    ],
+    data: Buffer.from([IX.HEARTBEAT]),
+  });
+}
+
+// Assemble a ready-to-send transaction (blockhash + feePayer filled by caller/adapter).
+export async function buildRegisterTx(opts, connection) {
+  const ix = await buildRegisterIx(opts);
