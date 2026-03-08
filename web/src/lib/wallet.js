@@ -33,3 +33,18 @@ class WalletService extends Emitter {
       new PhantomWalletAdapter(),
       new SolflareWalletAdapter(),
       new BackpackWalletAdapter(),
+    ];
+    this.WalletReadyState = WalletReadyState;
+  }
+
+  isConnected() {
+    return !!(this.adapter && this.adapter.connected && this.publicKey);
+  }
+
+  getAddress() {
+    if (!this.publicKey) return null;
+    const a = this.publicKey.toBase58();
+    return `${a.slice(0, 4)}…${a.slice(-4)}`;
+  }
+
+  getFullAddress() {
