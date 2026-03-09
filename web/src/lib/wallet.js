@@ -63,3 +63,18 @@ class WalletService extends Emitter {
     return a && (a.readyState === WalletReadyState.Installed || a.readyState === WalletReadyState.Loadable);
   }
 
+  async autoConnect() {
+    const last = localStorage.getItem(LAST_WALLET_KEY);
+    if (!last) return;
+    const adapter = this.supportedWallets.find((w) => w.name === last);
+    if (!adapter) return;
+    this.adapter = adapter;
+    this._listen();
+    try {
+      await adapter.autoConnect();
+    } catch {
+      this.adapter = null;
+      localStorage.removeItem(LAST_WALLET_KEY);
+    }
+  }
+
