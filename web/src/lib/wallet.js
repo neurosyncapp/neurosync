@@ -93,3 +93,18 @@ class WalletService extends Emitter {
     this.adapter.on('error', (e) => this.emit('error', e));
   }
 
+  async connect(walletName) {
+    if (this.isConnected()) return;
+    const adapter = this.supportedWallets.find((w) => w.name === walletName);
+    if (!adapter) throw new Error(`Wallet ${walletName} not found`);
+    this.adapter = adapter;
+    this._listen();
+    try {
+      await adapter.connect();
+      localStorage.setItem(LAST_WALLET_KEY, walletName);
+    } catch (e) {
+      this.adapter = null;
+      throw e;
+    }
+  }
+
