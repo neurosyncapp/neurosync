@@ -123,3 +123,13 @@ class WalletService extends Emitter {
       const { value } = await this.connection.getSignatureStatuses([sig]);
       const st = value && value[0];
       if (st && (st.confirmationStatus === 'confirmed' || st.confirmationStatus === 'finalized')) {
+        if (st.err) throw new Error('Transaction failed on-chain');
+        return sig;
+      }
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+    return sig; // submitted; treat as best-effort if confirmation lagged
+  }
+}
+
+export const walletService = new WalletService();
