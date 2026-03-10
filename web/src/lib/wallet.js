@@ -108,3 +108,18 @@ class WalletService extends Emitter {
     }
   }
 
+  async disconnect() {
+    if (this.adapter) await this.adapter.disconnect();
+  }
+
+  // Sign + send through the proxied connection, then poll for confirmation.
+  // Polling avoids the websocket that confirmTransaction would otherwise need
+  // (the RPC proxy is HTTP-only).
+  async sendTransaction(tx) {
+    if (!this.isConnected()) throw new Error('Wallet not connected');
+    const sig = await this.adapter.sendTransaction(tx, this.connection);
+    const deadline = Date.now() + 60000;
+    while (Date.now() < deadline) {
+      const { value } = await this.connection.getSignatureStatuses([sig]);
+      const st = value && value[0];
+      if (st && (st.confirmationStatus === 'confirmed' || st.confirmationStatus === 'finalized')) {
