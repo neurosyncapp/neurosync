@@ -43,3 +43,10 @@ export function createFooter() {
       </div>
       <div style="padding:16px 0; font-size:11px; color:#27272a;">© ${new Date().getFullYear()} NeuroSync · Solana</div>
     </div>
+  `;
+
+  const css = document.createElement('style');
+  css.textContent = `.ft-link{font-size:13px; color:#52525b; transition:color .15s;} .ft-link:hover{color:#a1a1aa;} .social-icon:hover{color:#a78bfa !important;}`;
+  footer.appendChild(css);
+  return footer;
+}
