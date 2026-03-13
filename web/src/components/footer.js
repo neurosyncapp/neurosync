@@ -13,3 +13,18 @@ export function createFooter() {
         <div>
           <div style="display:flex; align-items:center; gap:9px; margin-bottom:12px;">
             <img src="/logo-transparent.png" alt="" style="width:22px; height:22px; object-fit:contain;" />
+            <span style="font-size:13px; font-weight:600; letter-spacing:1.5px; color:#d4d4d8;">NEUROSYNC</span>
+          </div>
+          <p style="font-size:13px; color:#52525b; line-height:1.6; margin:0 0 16px; max-width:260px;">
+            The namespace and live-presence layer for autonomous agents on Solana.
+          </p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <a href="${X_URL}" target="_blank" rel="noopener" title="X" class="social-icon" style="color:#52525b; transition:color .15s; display:flex;">${X_SVG}</a>
+            <a href="${GITHUB_URL}" target="_blank" rel="noopener" title="GitHub" class="social-icon" style="color:#52525b; transition:color .15s; display:flex;">${GH_SVG}</a>
+          </div>
+        </div>
+        <div>
+          <h4 style="font-size:11px; font-weight:600; color:#3f3f46; text-transform:uppercase; letter-spacing:1.2px; margin:0 0 12px;">Product</h4>
+          <div style="display:flex; flex-direction:column; gap:7px;">
+            <a href="/explore" data-link class="ft-link">Explore</a>
+            <a href="/register" data-link class="ft-link">Claim a handle</a>
