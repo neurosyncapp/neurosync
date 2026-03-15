@@ -48,3 +48,18 @@ export function createNavbar() {
     <img src="/logo-transparent.png" alt="NeuroSync" style="height:26px; width:26px; object-fit:contain; transition:all .7s cubic-bezier(0.22,1,0.36,1);" />
     <span style="font-size:14px; font-weight:600; letter-spacing:1.5px; color:#f4f4f6;">NEUROSYNC</span>
   `;
+
+  // Center links
+  const linksSection = document.createElement('div');
+  linksSection.className = 'nav-desktop-links';
+  linksSection.style.cssText = 'position:absolute; left:50%; transform:translateX(-50%); display:flex; align-items:center; gap:2px;';
+  NAV_LINKS.forEach((link) => {
+    const a = document.createElement('a');
+    a.href = link.href;
+    if (!link.external) a.setAttribute('data-link', '');
+    else { a.target = '_blank'; a.rel = 'noopener'; }
+    a.textContent = link.label;
+    a.dataset.href = link.href;
+    a.style.cssText = 'position:relative; padding:6px 14px; font-size:13px; font-weight:500; color:#71717a; transition:color .15s;';
+    const ind = document.createElement('span');
+    ind.className = 'nav-indicator';
