@@ -63,3 +63,18 @@ export function createNavbar() {
     a.style.cssText = 'position:relative; padding:6px 14px; font-size:13px; font-weight:500; color:#71717a; transition:color .15s;';
     const ind = document.createElement('span');
     ind.className = 'nav-indicator';
+    ind.style.cssText = 'position:absolute; bottom:0; left:50%; transform:translateX(-50%) scaleX(0); width:16px; height:2px; border-radius:1px; background:#8b5cf6; transition:transform .15s ease;';
+    a.appendChild(ind);
+    a.addEventListener('mouseenter', () => { a.style.color = '#fafafa'; });
+    a.addEventListener('mouseleave', () => { if (!a.classList.contains('active')) a.style.color = '#71717a'; });
+    linksSection.appendChild(a);
+  });
+
+  // Right: socials + connect + claim
+  const right = document.createElement('div');
+  right.style.cssText = 'display:flex; align-items:center; gap:8px;';
+
+  const socials = document.createElement('div');
+  socials.className = 'nav-desktop-links';
+  socials.style.cssText = 'display:flex; align-items:center; gap:2px; margin-right:4px;';
+  [
