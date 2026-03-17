@@ -93,3 +93,18 @@ export function createNavbar() {
     socials.appendChild(a);
   });
 
+  const claimBtn = document.createElement('a');
+  claimBtn.href = '/register';
+  claimBtn.setAttribute('data-link', '');
+  claimBtn.className = 'nav-desktop-links btn btn-ghost';
+  claimBtn.style.cssText = 'padding:7px 14px; font-size:13px;';
+  claimBtn.textContent = 'Claim';
+
+  const connectBtn = document.createElement('button');
+  connectBtn.className = 'btn btn-primary';
+  connectBtn.style.cssText = 'padding:7px 14px; font-size:13px;';
+  const renderConnect = () => {
+    if (walletService.isConnected()) {
+      connectBtn.textContent = walletService.getAddress();
+    } else {
+      connectBtn.textContent = 'Connect';
