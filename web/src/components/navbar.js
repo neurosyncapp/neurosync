@@ -108,3 +108,18 @@ export function createNavbar() {
       connectBtn.textContent = walletService.getAddress();
     } else {
       connectBtn.textContent = 'Connect';
+    }
+  };
+  connectBtn.addEventListener('click', async () => {
+    if (walletService.isConnected()) {
+      await walletService.disconnect();
+    } else {
+      openWalletModal();
+    }
+  });
+  renderConnect();
+  walletService.on('connect', renderConnect);
+  walletService.on('disconnect', renderConnect);
+
+  // Hamburger
+  const hamburger = document.createElement('button');
