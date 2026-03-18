@@ -138,3 +138,18 @@ export function createNavbar() {
 
   // Mobile sidebar
   const overlay = document.createElement('div');
+  overlay.style.cssText = 'position:fixed; inset:0; z-index:100; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .3s;';
+  const sidebar = document.createElement('div');
+  sidebar.style.cssText = 'position:fixed; top:0; right:0; bottom:0; z-index:101; width:264px; background:#0e0e14; border-left:1px solid rgba(255,255,255,0.06); transform:translateX(100%); transition:transform .3s cubic-bezier(0.22,1,0.36,1); display:flex; flex-direction:column; padding:20px;';
+  const sideLinks = NAV_LINKS.map((l) =>
+    `<a href="${l.href}" ${l.external ? 'target="_blank" rel="noopener"' : 'data-link'} class="side-link" style="padding:11px 12px; border-radius:8px; font-size:14px; font-weight:500; color:#a1a1aa;">${l.label}</a>`
+  ).join('');
+  sidebar.innerHTML = `
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:22px;">
+      <img src="/logo-transparent.png" style="height:24px;" />
+      <button id="side-close" style="background:none; border:none; color:#71717a; padding:4px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:2px; flex:1;">${sideLinks}</div>
+    <div style="display:flex; gap:8px; margin:12px 0;">
+      <a href="${X_URL}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:8px; color:#a1a1aa; background:rgba(255,255,255,0.03);">${X_SVG}</a>
+      <a href="${GITHUB_URL}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:8px; color:#a1a1aa; background:rgba(255,255,255,0.03);">${GH_SVG}</a>
