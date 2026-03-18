@@ -168,3 +168,18 @@ export function createNavbar() {
   sidebar.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggle(false)));
   document.body.appendChild(overlay);
   document.body.appendChild(sidebar);
+
+  // Responsive + scroll shrink
+  const mstyle = document.createElement('style');
+  mstyle.textContent = `@media (max-width:768px){.nav-desktop-links{display:none !important;}.nav-mobile-toggle{display:flex !important;}}`;
+  header.appendChild(mstyle);
+
+  let scrolled = false;
+  window.addEventListener('scroll', () => {
+    const s = window.scrollY > 40;
+    if (s === scrolled) return;
+    scrolled = s;
+    nav.style.maxWidth = s ? '52rem' : '72rem';
+    nav.style.background = s ? 'rgba(10,10,14,0.62)' : 'rgba(10,10,14,0.78)';
+  }, { passive: true });
+
