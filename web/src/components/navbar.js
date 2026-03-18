@@ -153,3 +153,18 @@ export function createNavbar() {
     <div style="display:flex; gap:8px; margin:12px 0;">
       <a href="${X_URL}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:8px; color:#a1a1aa; background:rgba(255,255,255,0.03);">${X_SVG}</a>
       <a href="${GITHUB_URL}" target="_blank" rel="noopener" style="display:flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:8px; color:#a1a1aa; background:rgba(255,255,255,0.03);">${GH_SVG}</a>
+    </div>
+    <a href="/register" data-link class="btn btn-primary">Claim a handle</a>
+  `;
+
+  const toggle = (open) => {
+    sidebar.style.transform = open ? 'translateX(0)' : 'translateX(100%)';
+    overlay.style.opacity = open ? '1' : '0';
+    overlay.style.pointerEvents = open ? 'all' : 'none';
+  };
+  hamburger.addEventListener('click', () => toggle(true));
+  overlay.addEventListener('click', () => toggle(false));
+  sidebar.querySelector('#side-close').addEventListener('click', () => toggle(false));
+  sidebar.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => toggle(false)));
+  document.body.appendChild(overlay);
+  document.body.appendChild(sidebar);
