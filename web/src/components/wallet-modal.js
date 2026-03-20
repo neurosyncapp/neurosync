@@ -53,3 +53,18 @@ export function openWalletModal() {
       row.style.opacity = '0.6';
       try {
         await walletService.connect(name);
+        close();
+      } catch (e) {
+        row.style.opacity = '1';
+        const err = panel.querySelector('#wm-err') || document.createElement('div');
+        err.id = 'wm-err';
+        err.style.cssText = 'margin-top:12px; font-size:12px; color:#f87171;';
+        err.textContent = e.message || 'Failed to connect';
+        panel.appendChild(err);
+      }
+    });
+    list.appendChild(row);
+  });
+
+  panel.querySelector('#wm-close').addEventListener('click', close);
+  el.addEventListener('click', (e) => { if (e.target === el) close(); });
