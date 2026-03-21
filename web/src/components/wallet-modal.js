@@ -68,3 +68,10 @@ export function openWalletModal() {
 
   panel.querySelector('#wm-close').addEventListener('click', close);
   el.addEventListener('click', (e) => { if (e.target === el) close(); });
+  el.appendChild(panel);
+  document.body.appendChild(el);
+}
+
+function close() {
+  if (el) { el.remove(); el = null; }
+}
