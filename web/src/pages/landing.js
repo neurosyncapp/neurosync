@@ -48,3 +48,18 @@ export function landingPage(app) {
   `;
   app.appendChild(hero);
 
+  const form = hero.querySelector('#claim-form');
+  const input = hero.querySelector('#claim-input');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const n = normalizeName(input.value);
+    navigate(n ? `/register?name=${encodeURIComponent(n)}` : '/register');
+  });
+
+  // ---- how it works ----
+  const main = document.createElement('div');
+  main.className = 'container';
+  main.innerHTML = `
+    <section class="reveal" style="text-align:center; padding-top:40px;">
+      <h2 class="h-title" style="margin-bottom:10px;">How it works</h2>
+      <p class="muted" style="max-width:440px; margin:0 auto;">Three primitives, one handle. Each is an on-chain object anyone can read.</p>
