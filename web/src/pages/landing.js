@@ -93,3 +93,18 @@ function howRow(num, title, body, viz, alt) {
     </div>`;
   const art = `
     <div class="how-viz card ${alt ? 'reveal-left' : 'reveal-right'}" data-delay="90" style="padding:30px; display:flex; align-items:center; justify-content:center; min-height:230px; background:rgba(139,92,246,0.03);">
+      ${viz}
+    </div>`;
+  return `
+    <section class="section how-row ${alt ? 'alt' : ''}" style="display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;">
+      ${alt ? art + text : text + art}
+    </section>`;
+}
+
+/* ---------- inline animated SVGs ---------- */
+
+// Identity: a steady point shuttles the resolve path between handle and wallet.
+function vizIdentity() {
+  return `
+  <svg class="viz" viewBox="0 0 240 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <line x1="104" y1="65" x2="160" y2="65" stroke="rgba(167,139,250,0.22)" stroke-width="2"/>
