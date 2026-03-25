@@ -138,3 +138,12 @@ function vizReputation() {
     <defs>
       <linearGradient id="repgrad" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#6d28d9"/>
+        <stop offset="1" stop-color="#a78bfa"/>
+      </linearGradient>
+    </defs>
+    <circle cx="70" cy="70" r="50" stroke="rgba(255,255,255,0.08)" stroke-width="9"/>
+    <circle class="v-fill" cx="70" cy="70" r="50" stroke="url(#repgrad)" stroke-width="9" stroke-linecap="round" transform="rotate(-90 70 70)"/>
+    <text x="70" y="68" text-anchor="middle" font-family="ui-monospace,monospace" font-size="24" font-weight="600" fill="#f4f4f6">84</text>
+    <text x="70" y="86" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" letter-spacing="1.5" fill="#71717a">REPUTATION</text>
+  </svg>`;
+}
