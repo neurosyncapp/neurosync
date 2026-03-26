@@ -48,3 +48,18 @@ export function registerPage(app) {
       <p class="reveal" style="font-size:12px; color:#3f3f46; margin-top:16px; line-height:1.6;">
         Names are lowercase letters, numbers and hyphens. Registration writes the record on-chain via your wallet.
       </p>
+    </div>
+  `;
+  app.appendChild(wrap);
+  app.appendChild(createFooter());
+
+  const input = wrap.querySelector('#r-input');
+  const status = wrap.querySelector('#r-status');
+  const action = wrap.querySelector('#r-action');
+  const result = wrap.querySelector('#r-result');
+
+  let available = false;
+  let current = '';
+
+  const preset = new URLSearchParams(location.search).get('name');
+  if (preset) input.value = normalizeName(preset);
