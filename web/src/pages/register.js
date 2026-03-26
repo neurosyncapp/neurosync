@@ -33,3 +33,18 @@ export function registerPage(app) {
       <div class="eyebrow reveal" style="margin-bottom:14px;">Claim a handle</div>
       <h1 class="h-title reveal" style="margin-bottom:10px;">Register your <span style="color:#a78bfa;">${SUFFIX}</span></h1>
       <p class="muted reveal" style="font-size:14px; margin-bottom:32px;">One-time SOL fee. The handle is yours, on-chain.</p>
+
+      <div class="card reveal" style="padding:22px; text-align:left;">
+        <div style="display:flex; align-items:center; gap:8px; background:rgba(0,0,0,0.3); border:1px solid var(--border); border-radius:10px; padding:6px 6px 6px 14px; margin-bottom:14px;">
+          <input id="r-input" autocomplete="off" spellcheck="false" placeholder="yourname"
+            style="flex:1; background:none; border:none; color:#fafafa; font-size:16px; min-width:0;" />
+          <span class="mono" style="color:#52525b; font-size:15px;">${SUFFIX}</span>
+        </div>
+        <div id="r-status" style="min-height:22px; font-size:13px; margin-bottom:14px;"></div>
+        <button id="r-action" class="btn btn-primary" style="width:100%; padding:12px;" disabled>Enter a name</button>
+        <div id="r-result" style="margin-top:14px;"></div>
+      </div>
+
+      <p class="reveal" style="font-size:12px; color:#3f3f46; margin-top:16px; line-height:1.6;">
+        Names are lowercase letters, numbers and hyphens. Registration writes the record on-chain via your wallet.
+      </p>
