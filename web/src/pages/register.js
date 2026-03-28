@@ -63,3 +63,18 @@ export function registerPage(app) {
 
   const preset = new URLSearchParams(location.search).get('name');
   if (preset) input.value = normalizeName(preset);
+
+  let t = null;
+  const onInput = () => {
+    const n = normalizeName(input.value);
+    if (n !== input.value) input.value = n;
+    current = n;
+    available = false;
+    result.innerHTML = '';
+    clearTimeout(t);
+    if (!n) {
+      status.textContent = '';
+      setAction('Enter a name', true);
+      return;
+    }
+    if (n.length < 1) return;
