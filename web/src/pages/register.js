@@ -88,3 +88,13 @@ export function registerPage(app) {
     try {
       const res = await checkAvailability(n);
       if (current !== n) return;
+      available = res.available;
+      if (res.available) {
+        const fee = getConfig().registerFeeSol;
+        status.innerHTML = `<span style="color:#34d399;">${escapeHtml(n)}${SUFFIX} is available</span>`;
+        setAction(walletService.isConnected() ? `Register for ${fee} SOL` : 'Connect wallet to claim', false);
+      } else {
+        status.innerHTML = `<span style="color:#f87171;">${escapeHtml(n)}${SUFFIX} is taken</span> · <a href="/agent/${encodeURIComponent(n)}" data-link style="color:#a78bfa;">view</a>`;
+        setAction('Taken', true);
+      }
+    } catch (e) {
