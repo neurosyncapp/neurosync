@@ -108,3 +108,13 @@ export function registerPage(app) {
     action.disabled = disabled;
     action.style.opacity = disabled ? '0.5' : '1';
   }
+
+  action.addEventListener('click', async () => {
+    if (!available || !current) return;
+    if (!walletService.isConnected()) {
+      openWalletModal();
+      const onConn = () => {
+        walletService.off('connect', onConn);
+        check(current);
+      };
+      walletService.on('connect', onConn);
