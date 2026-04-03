@@ -128,3 +128,13 @@ export function registerPage(app) {
     result.innerHTML = '';
     try {
       const payer = walletService.getFullAddress();
+      const tx = await buildRegisterTx({ payer, label: n, resolver: payer }, walletService.connection);
+      setAction('Confirm in wallet…', true);
+      const sig = await walletService.sendTransaction(tx);
+      result.innerHTML = `
+        <div style="padding:14px; background:rgba(52,211,153,0.08); border:1px solid rgba(52,211,153,0.25); border-radius:10px;">
+          <div style="font-size:13px; color:#34d399; margin-bottom:6px;">Registered ${escapeHtml(n)}${SUFFIX} 🎉</div>
+          <a href="https://solscan.io/tx/${sig}" target="_blank" rel="noopener" style="font-size:12px; color:#a78bfa;">View transaction ↗</a>
+        </div>`;
+      setTimeout(() => navigate(`/agent/${encodeURIComponent(n)}`), 1800);
+    } catch (e) {
