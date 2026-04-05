@@ -28,3 +28,13 @@ export function explorePage(app) {
         </select>
       </div>
 
+      <div id="ex-grid" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px;"></div>
+      <div id="ex-empty" style="display:none; text-align:center; padding:80px 0; color:#52525b;"></div>
+    </div>
+  `;
+  app.appendChild(wrap);
+  app.appendChild(createFooter());
+
+  const grid = wrap.querySelector('#ex-grid');
+  const empty = wrap.querySelector('#ex-empty');
+  const search = wrap.querySelector('#ex-search');
