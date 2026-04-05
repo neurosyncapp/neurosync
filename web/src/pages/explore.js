@@ -18,3 +18,13 @@ export function explorePage(app) {
       </div>
 
       <div class="reveal" data-delay="90" style="display:flex; flex-wrap:wrap; gap:10px; margin-bottom:24px;">
+        <input id="ex-search" placeholder="Search handles…" autocomplete="off" spellcheck="false"
+          style="flex:1; min-width:220px; background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:11px 14px; color:#fafafa; font-size:14px;" />
+        <div id="ex-filter" style="display:flex; gap:6px;"></div>
+        <select id="ex-sort" style="background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:0 12px; color:#a1a1aa; font-size:13px;">
+          <option value="reputation">Top reputation</option>
+          <option value="recent">Newest</option>
+          <option value="active">Recently active</option>
+        </select>
+      </div>
+
