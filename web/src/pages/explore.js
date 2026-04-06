@@ -58,3 +58,13 @@ export function explorePage(app) {
       b.style.color = on ? '#fafafa' : 'var(--text-dim)';
     });
   };
+  paintFilter();
+
+  function skeletons() {
+    grid.innerHTML = Array.from({ length: 8 })
+      .map(() => `<div class="skeleton" style="height:120px;"></div>`)
+      .join('');
+    empty.style.display = 'none';
+  }
+
+  let timer = null;
