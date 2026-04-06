@@ -38,3 +38,13 @@ export function explorePage(app) {
   const grid = wrap.querySelector('#ex-grid');
   const empty = wrap.querySelector('#ex-empty');
   const search = wrap.querySelector('#ex-search');
+  const sortSel = wrap.querySelector('#ex-sort');
+  const filterBox = wrap.querySelector('#ex-filter');
+
+  let filter = 'all';
+  ['all', 'online'].forEach((f) => {
+    const b = document.createElement('button');
+    b.className = 'btn btn-ghost';
+    b.style.cssText = 'padding:9px 14px; font-size:13px;';
+    b.textContent = f === 'all' ? 'All' : 'Online';
+    b.dataset.f = f;
