@@ -68,3 +68,13 @@ export function explorePage(app) {
   }
 
   let timer = null;
+  search.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = setTimeout(run, 250);
+  });
+  sortSel.addEventListener('change', run);
+
+  async function run() {
+    skeletons();
+    try {
+      const { items = [] } = await explore({
