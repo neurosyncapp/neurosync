@@ -88,3 +88,13 @@ export function explorePage(app) {
         empty.style.display = 'block';
         empty.innerHTML = search.value
           ? `<div style="text-align:center; padding:72px 0; color:#52525b;">No handles match "<span style="color:#a1a1aa;">${escapeHtml(search.value)}</span>".</div>`
+          : emptyState({
+              icon: 'explore',
+              title: 'No handles registered yet',
+              text: 'The namespace just opened. Claim the first .agent handle and it will show up right here.',
+              ctaLabel: 'Claim a handle',
+              ctaHref: '/register',
+            });
+        return;
+      }
+      empty.style.display = 'none';
