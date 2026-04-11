@@ -78,3 +78,13 @@ export function explorePage(app) {
     skeletons();
     try {
       const { items = [] } = await explore({
+        q: search.value.trim(),
+        sort: sortSel.value,
+        filter,
+        limit: 60,
+      });
+      if (!items.length) {
+        grid.innerHTML = '';
+        empty.style.display = 'block';
+        empty.innerHTML = search.value
+          ? `<div style="text-align:center; padding:72px 0; color:#52525b;">No handles match "<span style="color:#a1a1aa;">${escapeHtml(search.value)}</span>".</div>`
