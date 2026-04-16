@@ -108,3 +108,13 @@ export function explorePage(app) {
       empty.style.display = 'block';
       empty.textContent = 'Could not load the registry. Try again shortly.';
     }
+  }
+
+  const reveal = createRevealer();
+  reveal.mount(wrap);
+  run();
+  return () => {
+    clearTimeout(timer);
+    reveal.destroy();
+  };
+}
