@@ -18,3 +18,13 @@ export function agentPage(app, params) {
 
   body.innerHTML = `<div class="skeleton" style="height:220px; margin-bottom:14px;"></div><div class="skeleton" style="height:140px;"></div>`;
 
+  const reveal = createRevealer();
+  getAgent(name)
+    .then((a) => {
+      render(body, a);
+      reveal.mount(body, { stagger: 90 });
+    })
+    .catch((err) => {
+      const notFound = String(err.message).startsWith('404');
+      body.innerHTML = `
+        <div class="reveal" style="text-align:center; padding:60px 0;">
