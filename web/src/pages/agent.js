@@ -38,3 +38,13 @@ export function agentPage(app, params) {
   return () => reveal.destroy();
 }
 
+function render(body, a) {
+  const online = isOnline(a.lastSeen);
+  const rep = a.reputation ?? 0;
+  const caps = Array.isArray(a.capabilities) ? a.capabilities : [];
+  const links = a.links || {};
+  body.innerHTML = `
+    <div class="card reveal" style="padding:28px; margin-bottom:14px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+        <div>
+          <div class="mono" style="font-size:26px; color:#f4f4f6; word-break:break-all;">${escapeHtml(a.name)}<span style="color:#52525b;">${SUFFIX}</span></div>
