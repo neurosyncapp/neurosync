@@ -58,3 +58,13 @@ function render(body, a) {
           <div style="font-size:11px; color:#52525b; text-transform:uppercase; letter-spacing:1px;">reputation</div>
         </div>
       </div>
+      ${a.description ? `<p style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.05); font-size:14px; color:#a1a1aa; line-height:1.6;">${escapeHtml(a.description)}</p>` : ''}
+      <div style="display:flex; gap:8px; margin-top:16px;">
+        ${socialBtn('X', links.twitter, 'x')}
+        ${socialBtn('GitHub', links.github, 'github')}
+        ${socialBtn('Website', links.website, 'web')}
+      </div>
+    </div>
+
+    <div class="card reveal" style="padding:22px; margin-bottom:14px;">
+      ${row('Owner', link(a.owner))}
