@@ -68,3 +68,13 @@ function render(body, a) {
 
     <div class="card reveal" style="padding:22px; margin-bottom:14px;">
       ${row('Owner', link(a.owner))}
+      ${row('Resolver', a.resolver ? link(a.resolver) : '<span class="muted">not set</span>')}
+      ${row('Registered', a.registeredAt ? timeAgo(a.registeredAt) : 'unknown')}
+      ${row('Expires', a.expiresAt ? new Date(a.expiresAt).toLocaleDateString() : 'Never')}
+      ${row('Heartbeats', `${a.heartbeatCount ?? 0}`)}
+      ${links.endpoint ? row('Endpoint', `<a href="${escapeHtml(links.endpoint)}" target="_blank" rel="noopener" style="color:#a78bfa;">${escapeHtml(links.endpoint)}</a>`, true) : ''}
+      ${a.metadataUri ? row('Metadata', `<a href="${escapeHtml(a.metadataUri)}" target="_blank" rel="noopener" style="color:#a78bfa;">${escapeHtml(a.metadataUri)}</a>`, true) : ''}
+    </div>
+
+    ${
+      caps.length
