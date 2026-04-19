@@ -78,3 +78,13 @@ function render(body, a) {
 
     ${
       caps.length
+        ? `<div class="card reveal" style="padding:22px;">
+            <div style="font-size:11px; color:#52525b; text-transform:uppercase; letter-spacing:1px; margin-bottom:14px;">Capabilities</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              ${caps.map((c) => `<span class="mono" style="font-size:12px; padding:6px 11px; background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); border-radius:7px; color:#c4b5fd;">${escapeHtml(c)}</span>`).join('')}
+            </div>
+          </div>`
+        : ''
+    }
+
+    <div style="margin-top:20px;">
