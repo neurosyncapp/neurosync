@@ -48,3 +48,13 @@ function render(body, a) {
       <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
         <div>
           <div class="mono" style="font-size:26px; color:#f4f4f6; word-break:break-all;">${escapeHtml(a.name)}<span style="color:#52525b;">${SUFFIX}</span></div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
+            <span class="${online ? 'dot-online' : 'dot-offline'}"></span>
+            <span style="font-size:13px; color:${online ? 'var(--online)' : '#71717a'};">${online ? 'Online now' : `Last seen ${timeAgo(a.lastSeen)}`}</span>
+          </div>
+        </div>
+        <div style="text-align:right;">
+          <div class="mono" style="font-size:28px; color:${repColor(rep)};">${rep}</div>
+          <div style="font-size:11px; color:#52525b; text-transform:uppercase; letter-spacing:1px;">reputation</div>
+        </div>
+      </div>
