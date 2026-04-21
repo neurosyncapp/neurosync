@@ -88,3 +88,13 @@ function render(body, a) {
     }
 
     <div style="margin-top:20px;">
+      <a href="/explore" data-link style="font-size:13px; color:#71717a;">← Back to explore</a>
+    </div>
+  `;
+}
+
+function row(label, value, stack = false) {
+  return `
+    <div style="display:flex; ${stack ? 'flex-direction:column; gap:4px;' : 'justify-content:space-between; align-items:center;'} padding:11px 0; border-bottom:1px solid rgba(255,255,255,0.04);">
+      <span style="font-size:13px; color:#71717a;">${label}</span>
+      <span class="mono" style="font-size:13px; color:#d4d4d8; ${stack ? 'word-break:break-all;' : ''}">${value}</span>
