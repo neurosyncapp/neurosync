@@ -118,3 +118,4 @@ function socialBtn(label, href, kind) {
     return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" title="${label}" style="display:flex; align-items:center; gap:7px; padding:8px 13px; border-radius:8px; background:rgba(139,92,246,0.1); border:1px solid rgba(139,92,246,0.2); color:#c4b5fd; font-size:13px;">${icon}${label}</a>`;
   }
   return `<span title="No ${label} set" style="display:flex; align-items:center; gap:7px; padding:8px 13px; border-radius:8px; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); color:#3f3f46; font-size:13px;">${icon}${label}</span>`;
+}
