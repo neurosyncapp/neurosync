@@ -23,3 +23,13 @@ export function leaderboardPage(app) {
   app.appendChild(wrap);
   app.appendChild(createFooter());
 
+  const lb = wrap.querySelector('#lb');
+  lb.innerHTML = Array.from({ length: 10 })
+    .map(() => '<div class="skeleton" style="height:52px; margin:6px;"></div>')
+    .join('');
+
+  explore({ sort: 'reputation', limit: 100 })
+    .then(({ items = [] }) => {
+      if (!items.length) {
+        lb.style.padding = '0';
+        lb.innerHTML = emptyState({
