@@ -63,3 +63,13 @@ function rankBadge(i) {
   }
   return `<span class="mono" style="display:inline-flex; align-items:center; justify-content:center; width:26px; color:#52525b; font-size:13px;">${i + 1}</span>`;
 }
+
+function row(a, i) {
+  const online = isOnline(a.lastSeen);
+  const rep = a.reputation ?? 0;
+  return `
+    <div data-name="${escapeHtml(a.name)}" style="display:flex; align-items:center; gap:14px; padding:12px 14px; border-radius:10px; cursor:pointer; transition:background .15s;"
+      onmouseover="this.style.background='rgba(255,255,255,0.025)'" onmouseout="this.style.background='transparent'">
+      ${rankBadge(i)}
+      <div style="flex:1; min-width:0;">
+        <div class="mono" style="font-size:15px; color:#f4f4f6; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(a.name)}<span style="color:#52525b;">${SUFFIX}</span></div>
