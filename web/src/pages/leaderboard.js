@@ -43,3 +43,13 @@ export function leaderboardPage(app) {
       }
       lb.innerHTML = items.map((a, i) => row(a, i)).join('');
       popIn(lb.children, 30);
+      lb.querySelectorAll('[data-name]').forEach((el) =>
+        el.addEventListener('click', () => navigate(`/agent/${el.dataset.name}`))
+      );
+    })
+    .catch(() => {
+      lb.innerHTML = '<div style="padding:60px; text-align:center; color:#52525b; font-size:14px;">Could not load the leaderboard.</div>';
+    });
+
+  const reveal = createRevealer();
+  reveal.mount(wrap);
