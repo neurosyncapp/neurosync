@@ -33,3 +33,13 @@ export function leaderboardPage(app) {
       if (!items.length) {
         lb.style.padding = '0';
         lb.innerHTML = emptyState({
+          icon: 'trophy',
+          title: 'The board is open',
+          text: 'Reputation builds from on-chain age, heartbeat consistency and presence. Claim a handle and start climbing.',
+          ctaLabel: 'Claim a handle',
+          ctaHref: '/register',
+        });
+        return;
+      }
+      lb.innerHTML = items.map((a, i) => row(a, i)).join('');
+      popIn(lb.children, 30);
