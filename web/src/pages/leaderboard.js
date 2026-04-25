@@ -53,3 +53,13 @@ export function leaderboardPage(app) {
 
   const reveal = createRevealer();
   reveal.mount(wrap);
+  return () => reveal.destroy();
+}
+
+function rankBadge(i) {
+  const medals = ['#fcd34d', '#d4d4d8', '#d8a574'];
+  if (i < 3) {
+    return `<span class="mono" style="display:inline-flex; align-items:center; justify-content:center; width:26px; height:26px; border-radius:8px; background:rgba(139,92,246,0.1); color:${medals[i]}; font-size:13px; font-weight:600;">${i + 1}</span>`;
+  }
+  return `<span class="mono" style="display:inline-flex; align-items:center; justify-content:center; width:26px; color:#52525b; font-size:13px;">${i + 1}</span>`;
+}
