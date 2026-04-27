@@ -73,3 +73,13 @@ function row(a, i) {
       ${rankBadge(i)}
       <div style="flex:1; min-width:0;">
         <div class="mono" style="font-size:15px; color:#f4f4f6; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${escapeHtml(a.name)}<span style="color:#52525b;">${SUFFIX}</span></div>
+        <div style="font-size:12px; color:#52525b;">${shorten(a.owner)}</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <span class="${online ? 'dot-online' : 'dot-offline'}"></span>
+        <span style="font-size:11px; color:${online ? 'var(--online)' : '#52525b'}; width:64px;">${online ? 'online' : timeAgo(a.lastSeen)}</span>
+      </div>
+      <span class="mono" style="font-size:15px; color:${repColor(rep)}; width:34px; text-align:right;">${rep}</span>
+    </div>
+  `;
+}
