@@ -38,3 +38,13 @@ export function activityPage(app) {
     </div>
   `;
 
+  const filters = document.createElement('div');
+  filters.className = 'reveal';
+  filters.dataset.delay = '80';
+  filters.style.cssText = 'display:flex; gap:4px; margin-bottom:20px; flex-wrap:wrap;';
+  const options = ['ALL', 'REGISTER', 'HEARTBEAT', 'RENEW', 'TRANSFER'];
+  let active = 'ALL';
+  options.forEach((f) => {
+    const btn = document.createElement('button');
+    btn.textContent = f;
+    btn.dataset.filter = f;
