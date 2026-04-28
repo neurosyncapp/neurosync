@@ -18,3 +18,13 @@ const COLORS = {
 const BG = {
   REGISTER: 'rgba(167,139,250,0.05)',
   HEARTBEAT: 'rgba(52,211,153,0.05)',
+  RENEW: 'rgba(96,165,250,0.05)',
+  TRANSFER: 'rgba(251,191,36,0.05)',
+  UPDATE: 'rgba(255,255,255,0.02)',
+};
+
+export function activityPage(app) {
+  app.innerHTML = '';
+
+  const wrapper = document.createElement('div');
+  wrapper.style.cssText = 'min-height:100vh; padding:120px 24px 0;';
