@@ -58,3 +58,13 @@ export function activityPage(app) {
       render();
     });
     filters.appendChild(btn);
+  });
+
+  const feed = document.createElement('div');
+  feed.style.cssText = 'display:flex; flex-direction:column; gap:2px;';
+
+  container.append(filters, feed);
+  wrapper.appendChild(container);
+  app.appendChild(wrapper);
+  app.appendChild(createFooter());
+
