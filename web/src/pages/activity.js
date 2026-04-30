@@ -48,3 +48,13 @@ export function activityPage(app) {
     const btn = document.createElement('button');
     btn.textContent = f;
     btn.dataset.filter = f;
+    btn.style.cssText = `padding:5px 12px; border-radius:6px; border:none; font-size:12px; font-weight:500; transition:all .15s; background:${f === 'ALL' ? 'rgba(255,255,255,0.06)' : 'transparent'}; color:${f === 'ALL' ? '#fafafa' : '#3f3f46'};`;
+    btn.addEventListener('click', () => {
+      active = f;
+      filters.querySelectorAll('button').forEach((b) => {
+        b.style.background = b.dataset.filter === f ? 'rgba(255,255,255,0.06)' : 'transparent';
+        b.style.color = b.dataset.filter === f ? '#fafafa' : '#3f3f46';
+      });
+      render();
+    });
+    filters.appendChild(btn);
