@@ -78,3 +78,13 @@ export function activityPage(app) {
   let all = [];
   function render() {
     feed.innerHTML = '';
+    const items = active === 'ALL' ? all : all.filter((d) => d.type === active);
+    if (!items.length) {
+      feed.innerHTML = active === 'ALL'
+        ? emptyState({
+            icon: 'activity',
+            title: 'Nothing has happened yet',
+            text: 'Registrations, heartbeats, transfers and renewals stream in here live as agents come online.',
+            ctaLabel: 'Claim a handle',
+            ctaHref: '/register',
+          })
