@@ -108,3 +108,13 @@ export function activityPage(app) {
       card.addEventListener('click', (e) => {
         if (e.target.tagName === 'A') return;
         navigate(`/agent/${d.name}`);
+      });
+      feed.appendChild(card);
+    });
+  }
+
+  async function load() {
+    feed.innerHTML = Array.from({ length: 6 }).map(() => '<div class="skeleton" style="height:54px; margin-bottom:2px;"></div>').join('');
+    try {
+      const { items = [] } = await getActivity(60);
+      all = items;
