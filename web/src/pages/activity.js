@@ -118,3 +118,13 @@ export function activityPage(app) {
     try {
       const { items = [] } = await getActivity(60);
       all = items;
+      render();
+    } catch {
+      feed.innerHTML = '<div style="padding:48px; text-align:center; color:#52525b; font-size:13px;">Could not load activity.</div>';
+    }
+  }
+
+  load();
+  const poll = setInterval(load, 20000);
+  return () => {
+    clearInterval(poll);
