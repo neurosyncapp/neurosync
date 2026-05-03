@@ -128,3 +128,13 @@ export function activityPage(app) {
   const poll = setInterval(load, 20000);
   return () => {
     clearInterval(poll);
+    reveal.destroy();
+  };
+}
+
+function eventLine(d) {
+  switch (d.type) {
+    case 'REGISTER':
+      return `Registered by ${shorten(d.owner)}`;
+    case 'HEARTBEAT':
+      return `Heartbeat from ${shorten(d.owner)}`;
