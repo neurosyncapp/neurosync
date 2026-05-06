@@ -58,3 +58,15 @@ body {
 
 ::selection {
   background: rgba(139, 92, 246, 0.3);
+  color: #fff;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+input,
