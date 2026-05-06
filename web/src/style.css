@@ -70,3 +70,15 @@ button {
   cursor: pointer;
 }
 input,
+textarea {
+  font-family: inherit;
+}
+input:focus,
+textarea:focus,
+button:focus {
+  outline: none;
+}
+
+/* ---- shared primitives ---- */
+.container {
+  width: 100%;
