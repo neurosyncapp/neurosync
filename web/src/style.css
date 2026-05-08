@@ -82,3 +82,15 @@ button:focus {
 /* ---- shared primitives ---- */
 .container {
   width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.container-narrow {
+  max-width: 56rem;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
