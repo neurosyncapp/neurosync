@@ -154,3 +154,15 @@ button:focus {
 .dot-offline {
   width: 7px;
   height: 7px;
+  border-radius: 50%;
+  background: #52525b;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease both;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
