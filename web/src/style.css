@@ -142,3 +142,15 @@ button:focus {
 
 .mono {
   font-family: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+.dot-online {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--online);
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.15);
+}
+.dot-offline {
+  width: 7px;
+  height: 7px;
