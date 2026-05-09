@@ -106,3 +106,15 @@ button:focus {
   padding: 10px 18px;
   border-radius: 8px;
   font-size: 14px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  transition: all 0.18s ease;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(139, 92, 246, 0.4), 0 8px 30px -12px var(--accent-glow);
+}
+.btn-primary:hover {
+  background: var(--accent-bright);
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.5), 0 10px 36px -10px var(--accent-glow);
