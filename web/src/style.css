@@ -286,3 +286,15 @@ button:focus {
 /* Identity: a steady point shuttles the resolve path between handle and wallet.
    No fading, no blink - it just moves smoothly back and forth. */
 .v-packet {
+  animation: vpacket 2.4s ease-in-out infinite alternate;
+}
+@keyframes vpacket {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(56px);
+  }
+}
+
+/* Presence: a heartbeat trace with a bright pulse sweeping along it. */
