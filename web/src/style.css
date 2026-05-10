@@ -226,3 +226,15 @@ button:focus {
   will-change: opacity, transform;
 }
 .reveal {
+  transform: translateY(28px);
+}
+.reveal-left {
+  transform: translateX(-34px);
+}
+.reveal-right {
+  transform: translateX(34px);
+}
+.reveal-scale {
+  transform: scale(0.94);
+}
+.reveal-blur {
