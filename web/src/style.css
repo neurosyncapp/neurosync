@@ -238,3 +238,15 @@ button:focus {
   transform: scale(0.94);
 }
 .reveal-blur {
+  transform: translateY(16px);
+  filter: blur(9px);
+}
+.in {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* staggered entrance for dynamic list items */
+.pop {
+  opacity: 0;
