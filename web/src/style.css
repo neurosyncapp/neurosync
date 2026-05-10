@@ -274,3 +274,15 @@ button:focus {
     transform: none;
   }
 }
+
+/* ---- how-it-works diagrams ---- */
+.viz {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  overflow: visible;
+}
+
+/* Identity: a steady point shuttles the resolve path between handle and wallet.
+   No fading, no blink - it just moves smoothly back and forth. */
+.v-packet {
