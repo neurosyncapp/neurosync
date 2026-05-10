@@ -214,3 +214,15 @@ button:focus {
   color: var(--text-dim);
 }
 
+/* ---- scroll / load reveal ---- */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale,
+.reveal-blur {
+  opacity: 0;
+  transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1), transform 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.75s ease;
+  will-change: opacity, transform;
+}
+.reveal {
