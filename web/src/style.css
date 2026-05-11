@@ -310,3 +310,15 @@ button:focus {
 }
 
 /* Reputation: a progress ring that fills once to the score. */
+.v-fill {
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  animation: vfill 1.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+@keyframes vfill {
+  to {
+    stroke-dashoffset: 79;
+  }
+}
+@media (max-width: 768px) {
+  .section {
