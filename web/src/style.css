@@ -322,3 +322,13 @@ button:focus {
 }
 @media (max-width: 768px) {
   .section {
+    padding: 64px 0;
+  }
+  .how-row {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .how-row.alt .how-viz {
+    order: -1;
+  }
+}
