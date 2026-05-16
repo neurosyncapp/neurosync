@@ -18,3 +18,13 @@ const handleLocation = async () => {
     initializeMobileNav();
 
     if (window.location.pathname !== getDocPath(pageKey)) {
+        window.history.replaceState({}, '', getDocPath(pageKey));
+    }
+    
+    window.scrollTo(0, 0);
+};
+
+const getDocPath = (id) => `/${id}`;
+
+const initializeMobileNav = () => {
+    const trigger = document.getElementById('docs-mobile-trigger');
