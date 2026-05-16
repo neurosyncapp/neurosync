@@ -8,3 +8,13 @@ export const navigate = (path) => {
     handleLocation();
 };
 
+const handleLocation = async () => {
+    const path = window.location.pathname;
+    
+    const pageId = path === '/' ? 'introduction' : path.substring(1);
+    const pageKey = docPages[pageId] ? pageId : 'introduction';
+    
+    appContainer.innerHTML = await renderDocsLayout(pageKey);
+    initializeMobileNav();
+
+    if (window.location.pathname !== getDocPath(pageKey)) {
