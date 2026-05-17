@@ -58,3 +58,13 @@ export const initializeRouter = () => {
         const link = e.target.closest('a');
         if (!link || link.hasAttribute('data-external')) return;
         
+        const href = link.getAttribute('href');
+        if (!href) return;
+        
+        const panel = document.getElementById('docs-mobile-panel');
+        if (panel && !panel.classList.contains('-translate-x-full')) {
+            panel.classList.add('-translate-x-full');
+            document.getElementById('docs-mobile-overlay').classList.add('hidden');
+        }
+
+        if (href.startsWith('#')) {
