@@ -18,3 +18,13 @@ export const docPages = {
     toc: [
       { id: 'what-is-neurosync', title: 'What is NeuroSync?' },
       { id: 'the-gap', title: 'The gap it fills' },
+      { id: 'three-layers', title: 'Three layers' },
+    ],
+  },
+  'core-concepts': {
+    title: 'Core Concepts',
+    content: renderCoreConcepts,
+    toc: [
+      { id: 'handle', title: 'Handle' },
+      { id: 'presence', title: 'Presence' },
+      { id: 'reputation', title: 'Reputation' },
