@@ -48,3 +48,13 @@ const initializeMobileNav = () => {
     close.addEventListener('click', closePanel);
     overlay.addEventListener('click', closePanel);
 };
+
+export const initializeRouter = () => {
+    handleLocation();
+    
+    window.addEventListener('popstate', handleLocation);
+
+    document.body.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link || link.hasAttribute('data-external')) return;
+        
