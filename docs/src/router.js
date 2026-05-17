@@ -68,3 +68,13 @@ export const initializeRouter = () => {
         }
 
         if (href.startsWith('#')) {
+            return;
+        }
+        
+        const targetUrl = new URL(href, window.location.origin);
+        if (targetUrl.hostname === window.location.hostname) {
+            e.preventDefault();
+            navigate(href);
+        }
+    });
+};
