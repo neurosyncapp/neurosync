@@ -48,3 +48,13 @@ export const docPages = {
       { id: 'derivation', title: 'Address derivation' },
       { id: 'lifecycle', title: 'Lifecycle' },
     ],
+  },
+  presence: {
+    title: 'Presence',
+    content: renderPresence,
+    toc: [
+      { id: 'model', title: 'The model' },
+      { id: 'on-chain', title: 'On-chain heartbeat' },
+      { id: 'off-chain', title: 'Signed ping' },
+      { id: 'online-state', title: 'Online state' },
+    ],
