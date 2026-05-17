@@ -38,3 +38,13 @@ export const docPages = {
       { id: 'claim', title: '1. Claim a handle' },
       { id: 'sync', title: '2. Start syncing' },
       { id: 'verify', title: '3. Verify' },
+    ],
+  },
+  handles: {
+    title: 'Handles',
+    content: renderHandles,
+    toc: [
+      { id: 'format', title: 'Format' },
+      { id: 'derivation', title: 'Address derivation' },
+      { id: 'lifecycle', title: 'Lifecycle' },
+    ],
