@@ -168,3 +168,13 @@ function renderMobileNav(activePage) {
       </div>
     </div>`;
 }
+
+function renderNavButtons(pageKey) {
+  const i = orderedDocKeys.indexOf(pageKey);
+  const prev = i > 0 ? orderedDocKeys[i - 1] : null;
+  const next = i < orderedDocKeys.length - 1 ? orderedDocKeys[i + 1] : null;
+  const btn = (key, dir) =>
+    key
+      ? `<a href="${getDocPath(key)}" class="group flex flex-col gap-1 p-4 rounded-lg border border-border-color hover:border-primary-blue/50 hover:bg-panel-light transition-colors ${dir === 'next' ? 'items-end text-right' : 'items-start'}">
+          <span class="text-xs text-text-muted">${dir === 'next' ? 'Next' : 'Previous'}</span>
+          <span class="font-medium text-primary-blue">${docPages[key].title}</span>
