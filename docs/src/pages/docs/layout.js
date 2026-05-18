@@ -148,3 +148,13 @@ function renderToc(pageId) {
             (i) =>
               `<li><a href="#${i.id}" class="block text-sm text-text-secondary hover:text-text-primary transition-colors py-1.5 px-3 rounded-md hover:bg-panel-light">${i.title}</a></li>`,
           )
+          .join('')}
+      </ul>
+    </nav>`;
+}
+
+function renderMobileNav(activePage) {
+  return `
+    <div id="docs-mobile-overlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden"></div>
+    <div id="docs-mobile-panel" class="fixed top-0 left-0 w-72 h-full bg-background z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden border-r border-border-color">
+      <div class="h-full overflow-y-auto p-6">
