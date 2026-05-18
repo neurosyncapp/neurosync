@@ -78,3 +78,13 @@ export const docPages = {
     ],
   },
   'register-handle': {
+    title: 'Register a handle',
+    content: renderRegisterHandle,
+    toc: [
+      { id: 'flow', title: 'The flow' },
+      { id: 'instruction', title: 'The instruction' },
+      { id: 'snippet', title: 'Snippet' },
+    ],
+  },
+  heartbeat: {
+    title: 'Heartbeat integration',
