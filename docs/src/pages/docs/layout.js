@@ -118,3 +118,13 @@ export const docPages = {
 
 const orderedDocKeys = Object.keys(docPages);
 const getDocPath = (id) => `/${id}`;
+
+function renderSidebarContent(activePage) {
+  const navLink = (id, name) =>
+    `<a href="${getDocPath(id)}" class="sidebar-link ${id === activePage ? 'active' : ''}">${name}</a>`;
+  const section = (title, keys) => `
+    <div class="space-y-2">
+      <h4 class="sidebar-heading">${title}</h4>
+      <div class="space-y-0.5">${keys.map((k) => navLink(k, docPages[k].title)).join('')}</div>
+    </div>`;
+  return `
