@@ -128,3 +128,13 @@ function renderSidebarContent(activePage) {
       <div class="space-y-0.5">${keys.map((k) => navLink(k, docPages[k].title)).join('')}</div>
     </div>`;
   return `
+    <nav class="space-y-8">
+      ${section('GETTING STARTED', ['introduction', 'core-concepts', 'quickstart'])}
+      ${section('PROTOCOL', ['handles', 'presence', 'reputation', 'resolution'])}
+      ${section('DEVELOPERS', ['register-handle', 'heartbeat', 'resolver-api'])}
+      ${section('REFERENCE', ['on-chain', 'faq'])}
+    </nav>`;
+}
+
+function renderToc(pageId) {
+  const toc = docPages[pageId]?.toc || [];
