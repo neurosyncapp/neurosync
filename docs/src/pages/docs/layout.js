@@ -98,3 +98,13 @@ export const docPages = {
   'resolver-api': {
     title: 'Resolver API',
     content: renderResolverApi,
+    toc: [
+      { id: 'base', title: 'Base URL' },
+      { id: 'endpoints', title: 'Endpoints' },
+      { id: 'rpc', title: 'RPC proxy' },
+    ],
+  },
+  'on-chain': {
+    title: 'On-chain program',
+    content: renderOnChain,
+    toc: [
