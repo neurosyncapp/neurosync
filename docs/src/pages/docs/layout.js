@@ -138,3 +138,13 @@ function renderSidebarContent(activePage) {
 
 function renderToc(pageId) {
   const toc = docPages[pageId]?.toc || [];
+  if (!toc.length) return '';
+  return `
+    <nav>
+      <h4 class="text-xs font-semibold text-text-muted uppercase tracking-wider mb-4">On this page</h4>
+      <ul class="space-y-1">
+        ${toc
+          .map(
+            (i) =>
+              `<li><a href="#${i.id}" class="block text-sm text-text-secondary hover:text-text-primary transition-colors py-1.5 px-3 rounded-md hover:bg-panel-light">${i.title}</a></li>`,
+          )
