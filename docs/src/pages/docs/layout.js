@@ -88,3 +88,13 @@ export const docPages = {
   },
   heartbeat: {
     title: 'Heartbeat integration',
+    content: renderHeartbeat,
+    toc: [
+      { id: 'message', title: 'The message' },
+      { id: 'sign', title: 'Sign and send' },
+      { id: 'interval', title: 'Interval' },
+    ],
+  },
+  'resolver-api': {
+    title: 'Resolver API',
+    content: renderResolverApi,
