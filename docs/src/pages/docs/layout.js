@@ -158,3 +158,13 @@ function renderMobileNav(activePage) {
     <div id="docs-mobile-overlay" class="fixed inset-0 bg-black/60 z-40 hidden lg:hidden"></div>
     <div id="docs-mobile-panel" class="fixed top-0 left-0 w-72 h-full bg-background z-50 transform -translate-x-full transition-transform duration-300 ease-in-out lg:hidden border-r border-border-color">
       <div class="h-full overflow-y-auto p-6">
+        <div class="flex justify-between items-center mb-6">
+          <span class="font-semibold text-text-primary">Menu</span>
+          <button id="docs-mobile-close" class="p-2 text-text-secondary hover:text-text-primary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+        ${renderSidebarContent(activePage)}
+      </div>
+    </div>`;
+}
