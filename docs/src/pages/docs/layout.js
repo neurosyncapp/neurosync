@@ -208,3 +208,13 @@ export async function renderDocsLayout(pageId) {
       </header>
 
       <div class="container mx-auto px-6 flex-grow">
+        <div class="relative flex lg:gap-8">
+          <aside class="hidden lg:block w-60 flex-shrink-0">
+            <div class="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-10 pr-4">${renderSidebarContent(pageKey)}</div>
+          </aside>
+          <main class="flex-1 min-w-0 py-10 lg:pl-4">
+            <article class="prose-custom w-full max-w-3xl">
+              ${contentHtml}
+              ${renderNavButtons(pageKey)}
+            </article>
+          </main>
