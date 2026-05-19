@@ -198,3 +198,13 @@ export async function renderDocsLayout(pageId) {
               <span class="font-semibold text-base text-text-primary">NeuroSync <span class="text-text-muted font-normal">Docs</span></span>
             </a>
             <div class="flex items-center gap-5">
+              <a href="https://neuro-sync.app" data-external class="hidden sm:block text-sm text-text-secondary hover:text-text-primary transition-colors">App ↗</a>
+              <button id="docs-mobile-trigger" class="lg:hidden p-2 text-text-secondary hover:text-text-primary">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="container mx-auto px-6 flex-grow">
