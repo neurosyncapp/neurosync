@@ -228,3 +228,7 @@ export async function renderDocsLayout(pageId) {
         <div class="container mx-auto px-6 py-8 text-center text-text-muted text-sm">
           © ${new Date().getFullYear()} NeuroSync · Solana
         </div>
+      </footer>
+      ${renderMobileNav(pageKey)}
+    </div>`;
+}
