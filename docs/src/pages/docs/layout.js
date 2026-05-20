@@ -218,3 +218,13 @@ export async function renderDocsLayout(pageId) {
               ${renderNavButtons(pageKey)}
             </article>
           </main>
+          <aside class="hidden xl:block w-56 flex-shrink-0">
+            <div class="sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto py-10 pl-4">${renderToc(pageKey)}</div>
+          </aside>
+        </div>
+      </div>
+
+      <footer class="border-t border-border-color mt-auto">
+        <div class="container mx-auto px-6 py-8 text-center text-text-muted text-sm">
+          © ${new Date().getFullYear()} NeuroSync · Solana
+        </div>
