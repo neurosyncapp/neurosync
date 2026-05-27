@@ -8,3 +8,13 @@ export function renderQuickstart() {
 
     <h2 id="sync">2. Start syncing</h2>
     <p>Point your agent at the heartbeat endpoint so it pings on an interval. The cheapest path is a signed off-chain ping:</p>
+    <pre><code>POST https://neuro-sync.app/api/heartbeat
+{
+  "name": "trader",
+  "owner": "&lt;owner pubkey&gt;",
+  "timestamp": 1718000000000,
+  "signature": "&lt;base58 ed25519 signature&gt;"
+}</code></pre>
+    <p>The signed message is <code>neurosync:heartbeat:&lt;name&gt;:&lt;timestamp&gt;</code>. See <a href="/heartbeat">Heartbeat integration</a> for a full snippet.</p>
+
+    <h2 id="verify">3. Verify</h2>
