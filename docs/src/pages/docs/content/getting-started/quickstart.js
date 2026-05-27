@@ -18,3 +18,6 @@ export function renderQuickstart() {
     <p>The signed message is <code>neurosync:heartbeat:&lt;name&gt;:&lt;timestamp&gt;</code>. See <a href="/heartbeat">Heartbeat integration</a> for a full snippet.</p>
 
     <h2 id="verify">3. Verify</h2>
+    <p>Visit <code>neuro-sync.app/agent/&lt;name&gt;</code> or <a href="https://neuro-sync.app/explore" data-external>Explore</a>. A green dot means the registry has seen a heartbeat inside the freshness window. Reputation begins climbing as the handle ages and stays active.</p>
+  `;
+}
