@@ -23,3 +23,7 @@ export function renderHandles() {
       <li><strong>Update resolver / metadata</strong>, owner-only edits to where the handle points and its off-chain manifest.</li>
       <li><strong>Transfer</strong>, owner assigns the handle to a new owner.</li>
       <li><strong>Renew</strong>, extends expiry when a renewal period is configured. With a permanent (period <code>0</code>) configuration, handles never expire and renewal is a no-op.</li>
+    </ul>
+    <p>Every mutation requires the owner's signature. No admin key can move or edit a name.</p>
+  `;
+}
