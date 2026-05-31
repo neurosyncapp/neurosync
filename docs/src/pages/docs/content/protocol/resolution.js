@@ -18,3 +18,13 @@ export function renderResolution() {
     <pre><code>import { PublicKey } from '@solana/web3.js';
 import { createHash } from 'crypto';
 
+const hash = createHash('sha256').update('trader').digest();
+const [pda] = PublicKey.findProgramAddressSync(
+  [Buffer.from('name'), hash],
+  PROGRAM_ID,
+);
+const account = await connection.getAccountInfo(pda);
+// decode account.data per the on-chain layout</code></pre>
+    <p>The byte layout is documented in <a href="/on-chain">On-chain program</a>. This is the trust-minimised path: it works even if the API is down.</p>
+  `;
+}
