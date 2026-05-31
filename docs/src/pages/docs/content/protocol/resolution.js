@@ -8,3 +8,13 @@ export function renderResolution() {
     <pre><code>GET /api/resolve/trader
 { "name": "trader", "owner": "...", "resolver": "...", "metadataUri": "..." }</code></pre>
 
+    <h2 id="reverse">Reverse</h2>
+    <p><code>wallet → name</code>. Return the primary handle for a wallet, the highest-reputation handle it owns.</p>
+    <pre><code>GET /api/reverse/&lt;wallet&gt;
+{ "wallet": "...", "primary": "trader" }</code></pre>
+
+    <h2 id="no-api">Resolving without the API</h2>
+    <p>Forward resolution does not depend on NeuroSync infrastructure. Derive the PDA and read the account from any RPC node:</p>
+    <pre><code>import { PublicKey } from '@solana/web3.js';
+import { createHash } from 'crypto';
+
