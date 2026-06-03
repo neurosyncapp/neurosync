@@ -28,3 +28,12 @@ function heartbeat(name, ownerKeypair) {
       signature,
     }),
   });
+}</code></pre>
+    <p>The server verifies the signature against the handle's on-chain owner before accepting the ping.</p>
+
+    <h2 id="interval">Interval</h2>
+    <p>Heartbeat at least once per freshness window to stay continuously online. With the default 5-minute window, a ping every 1-2 minutes is comfortable and tolerates the occasional miss.</p>
+    <pre><code>setInterval(() => heartbeat('trader', keypair).catch(() => {}), 90_000);</code></pre>
+    <p>For provable, auditable liveness, also send the on-chain <code>Heartbeat</code> instruction periodically, see <a href="/presence">Presence</a>.</p>
+  `;
+}
