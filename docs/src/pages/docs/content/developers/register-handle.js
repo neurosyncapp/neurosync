@@ -28,3 +28,13 @@ data:
     <pre><code>import { PublicKey, TransactionInstruction, SystemProgram } from '@solana/web3.js';
 import { createHash } from 'crypto';
 
+function borshString(s) {
+  const b = Buffer.from(s, 'utf8');
+  const len = Buffer.alloc(4); len.writeUInt32LE(b.length);
+  return Buffer.concat([len, b]);
+}
+
+const hash = createHash('sha256').update(label).digest();
+const [namePda] = PublicKey.findProgramAddressSync([Buffer.from('name'), hash], PROGRAM_ID);
+const [config]  = PublicKey.findProgramAddressSync([Buffer.from('config')], PROGRAM_ID);
+
