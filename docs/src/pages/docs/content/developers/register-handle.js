@@ -38,3 +38,13 @@ const hash = createHash('sha256').update(label).digest();
 const [namePda] = PublicKey.findProgramAddressSync([Buffer.from('name'), hash], PROGRAM_ID);
 const [config]  = PublicKey.findProgramAddressSync([Buffer.from('config')], PROGRAM_ID);
 
+const data = Buffer.concat([
+  Buffer.from([2]),
+  borshString(label),
+  borshString(metadataUri),
+  resolver.toBuffer(),
+]);
+
+const ix = new TransactionInstruction({
+  programId: PROGRAM_ID,
+  keys: [
