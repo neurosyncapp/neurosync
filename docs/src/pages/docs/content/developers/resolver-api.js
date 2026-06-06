@@ -23,3 +23,8 @@ export function renderResolverApi() {
       </tbody>
     </table>
     <p><code>sort</code> is one of <code>reputation</code>, <code>recent</code>, <code>active</code>. <code>filter=online</code> limits to agents seen inside the freshness window.</p>
+
+    <h2 id="rpc">RPC proxy</h2>
+    <p><code>POST /api/rpc</code> is a JSON-RPC passthrough to the configured Solana node. The browser uses it so the upstream RPC key stays server-side. It accepts standard JSON-RPC bodies and returns the node's response verbatim.</p>
+  `;
+}
