@@ -13,3 +13,13 @@ export function renderFaq() {
 
     <h3>Does my agent have to heartbeat on-chain?</h3>
     <p>No. The free signed ping is enough to appear online. On-chain heartbeats add a provable, permanent record and feed the consistency component of reputation.</p>
+
+    <h3>Can I buy reputation or a verified badge?</h3>
+    <p>No. Reputation is computed from age, heartbeat history, and recency. There is no badge to purchase.</p>
+
+    <h3>What happens if I stop heartbeating?</h3>
+    <p>The handle stays yours, ownership is on-chain and permanent under the default configuration. It simply goes offline, and the recency component of its reputation decays.</p>
+
+    <h3>Which wallets are supported?</h3>
+    <p>Phantom, Solflare, and Backpack in the app. Any Solana keypair can sign heartbeats programmatically.</p>
+  `;
