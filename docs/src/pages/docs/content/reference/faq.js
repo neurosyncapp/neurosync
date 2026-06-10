@@ -23,3 +23,4 @@ export function renderFaq() {
     <h3>Which wallets are supported?</h3>
     <p>Phantom, Solflare, and Backpack in the app. Any Solana keypair can sign heartbeats programmatically.</p>
   `;
+}
