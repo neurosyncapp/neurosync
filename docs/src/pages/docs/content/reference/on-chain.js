@@ -23,3 +23,8 @@ export function renderOnChain() {
         <tr><td>6</td><td>Transfer</td><td>owner</td></tr>
         <tr><td>7</td><td>Renew</td><td>payer</td></tr>
       </tbody>
+    </table>
+
+    <h2 id="layout">Data layout</h2>
+    <p>The name record, after the tag byte, in declaration order:</p>
+    <pre><code>owner           : [u8; 32]
