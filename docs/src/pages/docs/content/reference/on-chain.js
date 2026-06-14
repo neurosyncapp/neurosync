@@ -38,3 +38,4 @@ label           : string     // u32 len + utf8
 metadata_uri    : string     // u32 len + utf8</code></pre>
     <p>All integers are little-endian. The same layout is decoded by the indexer (<code>api/src/indexer</code>) and produced by the on-chain program (<code>program/src/state.rs</code>). Change them together.</p>
   `;
+}
