@@ -22,3 +22,9 @@
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
+    background: #5b4a8a;
+  }
+  ::selection {
+    background: rgba(139, 92, 246, 0.3);
+    color: #fff;
+  }
