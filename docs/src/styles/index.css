@@ -40,3 +40,9 @@
            prose-ol:text-text-secondary
            prose-ul:text-text-secondary
            prose-li:text-text-secondary prose-li:marker:text-primary-blue
+           prose-a:text-accent-blue prose-a:font-medium prose-a:no-underline hover:prose-a:underline
+           prose-strong:text-text-primary
+           prose-blockquote:border-l-accent-blue prose-blockquote:bg-sidebar prose-blockquote:px-4 prose-blockquote:text-text-secondary
+
+           /* Inline Code Styles */
+           prose-code:bg-sidebar prose-code:px-1.5 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-primary-blue-light
