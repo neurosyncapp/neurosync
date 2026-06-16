@@ -34,3 +34,9 @@
   .prose-custom {
     @apply prose max-w-none
            prose-h1:font-bold prose-h1:text-3xl prose-h1:md:text-4xl prose-h1:text-text-primary prose-h1:tracking-tight
+           prose-h2:font-bold prose-h2:text-2xl prose-h2:text-text-primary prose-h2:border-b prose-h2:border-border-color prose-h2:pb-4 prose-h2:mb-6 prose-h2:mt-12
+           prose-h3:font-bold prose-h3:text-xl prose-h3:text-text-primary
+           prose-p:text-text-primary prose-p:text-base prose-p:leading-relaxed
+           prose-ol:text-text-secondary
+           prose-ul:text-text-secondary
+           prose-li:text-text-secondary prose-li:marker:text-primary-blue
