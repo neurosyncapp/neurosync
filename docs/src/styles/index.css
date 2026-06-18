@@ -58,3 +58,9 @@
   .prose-custom h2,
   .prose-custom h3 {
     scroll-margin-top: 6rem;
+  }
+
+  .prose-custom code::before,
+  .prose-custom code::after {
+    content: none;
+  }
