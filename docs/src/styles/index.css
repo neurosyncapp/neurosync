@@ -52,3 +52,9 @@
 
            /* Tables */
            prose-table:text-sm prose-th:text-text-primary prose-td:text-text-secondary prose-td:border-border-color prose-th:border-border-color;
+  }
+
+  .prose-custom h1,
+  .prose-custom h2,
+  .prose-custom h3 {
+    scroll-margin-top: 6rem;
