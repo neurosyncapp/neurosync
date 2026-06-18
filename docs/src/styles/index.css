@@ -46,3 +46,9 @@
 
            /* Inline Code Styles */
            prose-code:bg-sidebar prose-code:px-1.5 prose-code:py-1 prose-code:rounded-md prose-code:font-mono prose-code:text-primary-blue-light
+
+           /* Code Block Styles */
+           prose-pre:bg-sidebar prose-pre:border prose-pre:border-border-color prose-pre:text-text-primary prose-pre:p-4 prose-pre:rounded-lg
+
+           /* Tables */
+           prose-table:text-sm prose-th:text-text-primary prose-td:text-text-secondary prose-td:border-border-color prose-th:border-border-color;
