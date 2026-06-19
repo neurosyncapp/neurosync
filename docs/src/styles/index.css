@@ -82,3 +82,7 @@
     @apply text-text-secondary hover:bg-panel-light hover:text-text-primary;
   }
 
+  .sidebar-link.active {
+    @apply font-semibold text-primary-blue-light bg-primary-blue/10;
+  }
+}
