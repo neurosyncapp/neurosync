@@ -70,3 +70,9 @@
   }
 
   .lead {
+    @apply text-lg text-text-secondary leading-relaxed;
+  }
+
+  .sidebar-heading {
+    @apply text-sm font-semibold text-text-primary uppercase tracking-wider px-3;
+  }
