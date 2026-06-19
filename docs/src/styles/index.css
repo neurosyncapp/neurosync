@@ -64,3 +64,9 @@
   .prose-custom code::after {
     content: none;
   }
+
+  .prose-custom pre code {
+    @apply bg-transparent p-0 text-text-secondary;
+  }
+
+  .lead {
