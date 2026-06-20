@@ -13,3 +13,13 @@ import fs from 'node:fs';
 import {
   Connection,
   Keypair,
+  PublicKey,
+  SystemProgram,
+  Transaction,
+  TransactionInstruction,
+  LAMPORTS_PER_SOL,
+  sendAndConfirmTransaction,
+} from '@solana/web3.js';
+
+const args = parseArgs(process.argv.slice(2));
+const cmd = args._[0];
