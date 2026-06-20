@@ -23,3 +23,13 @@ import {
 
 const args = parseArgs(process.argv.slice(2));
 const cmd = args._[0];
+const RPC = args.rpc || process.env.SOLANA_RPC || 'https://api.mainnet-beta.solana.com';
+const conn = new Connection(RPC, 'confirmed');
+
+function parseArgs(argv) {
+  const out = { _: [] };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a.startsWith('--')) out[a.slice(2)] = argv[++i];
+    else out._.push(a);
+  }
