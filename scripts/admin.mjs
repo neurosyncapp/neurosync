@@ -33,3 +33,13 @@ function parseArgs(argv) {
     if (a.startsWith('--')) out[a.slice(2)] = argv[++i];
     else out._.push(a);
   }
+  return out;
+}
+
+function loadKeypair(path) {
+  const p = path.replace(/^~/, process.env.HOME || process.env.USERPROFILE);
+  return Keypair.fromSecretKey(new Uint8Array(JSON.parse(fs.readFileSync(p, 'utf8'))));
+}
+
+function configPda(programId) {
+  return PublicKey.findProgramAddressSync([Buffer.from('config')], programId);
