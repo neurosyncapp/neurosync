@@ -68,3 +68,8 @@ async function initConfig() {
   const fee = Math.round(Number(args.fee ?? 0.05) * LAMPORTS_PER_SOL);
   const renew = Math.round(Number(args.renew ?? args.fee ?? 0.05) * LAMPORTS_PER_SOL);
   const period = Number(args.period ?? 0);
+
+  const exists = await conn.getAccountInfo(config);
+  const tag = exists ? 1 : 0; // UpdateConfig vs InitConfig
+
+  const data = Buffer.concat([
