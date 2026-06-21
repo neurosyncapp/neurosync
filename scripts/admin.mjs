@@ -63,3 +63,8 @@ async function initConfig() {
   const admin = loadKeypair(args.keypair);
   const programId = new PublicKey(args.program);
   const treasury = new PublicKey(args.treasury);
+  const [config] = configPda(programId);
+
+  const fee = Math.round(Number(args.fee ?? 0.05) * LAMPORTS_PER_SOL);
+  const renew = Math.round(Number(args.renew ?? args.fee ?? 0.05) * LAMPORTS_PER_SOL);
+  const period = Number(args.period ?? 0);
