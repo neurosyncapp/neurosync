@@ -73,3 +73,8 @@ async function initConfig() {
   const tag = exists ? 1 : 0; // UpdateConfig vs InitConfig
 
   const data = Buffer.concat([
+    Buffer.from([tag]),
+    treasury.toBuffer(),
+    u64le(fee),
+    u64le(renew),
+    i64le(period),
