@@ -83,3 +83,8 @@ async function initConfig() {
   const keys = exists
     ? [
         { pubkey: admin.publicKey, isSigner: true, isWritable: true },
+        { pubkey: config, isSigner: false, isWritable: true },
+      ]
+    : [
+        { pubkey: admin.publicKey, isSigner: true, isWritable: true },
+        { pubkey: config, isSigner: false, isWritable: true },
