@@ -43,3 +43,13 @@ function loadKeypair(path) {
 
 function configPda(programId) {
   return PublicKey.findProgramAddressSync([Buffer.from('config')], programId);
+}
+
+function u64le(n) {
+  const b = Buffer.alloc(8);
+  b.writeBigUInt64LE(BigInt(Math.round(n)));
+  return b;
+}
+function i64le(n) {
+  const b = Buffer.alloc(8);
+  b.writeBigInt64LE(BigInt(Math.round(n)));
