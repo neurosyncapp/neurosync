@@ -78,3 +78,8 @@ async function initConfig() {
     u64le(fee),
     u64le(renew),
     i64le(period),
+  ]);
+
+  const keys = exists
+    ? [
+        { pubkey: admin.publicKey, isSigner: true, isWritable: true },
