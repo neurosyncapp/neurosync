@@ -93,3 +93,8 @@ async function initConfig() {
 
   const ix = new TransactionInstruction({ programId, keys, data });
   const sig = await sendAndConfirmTransaction(conn, new Transaction().add(ix), [admin]);
+  console.log(`${exists ? 'Updated' : 'Initialised'} config PDA ${config.toBase58()}`);
+  console.log(`  treasury : ${treasury.toBase58()}`);
+  console.log(`  fee      : ${fee / LAMPORTS_PER_SOL} SOL`);
+  console.log(`  renew    : ${renew / LAMPORTS_PER_SOL} SOL`);
+  console.log(`  period   : ${period}s ${period === 0 ? '(permanent)' : ''}`);
