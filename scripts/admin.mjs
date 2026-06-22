@@ -118,3 +118,8 @@ async function info() {
   const renew = Number(d.readBigUInt64LE(o)); o += 8;
   const period = Number(d.readBigInt64LE(o)); o += 8;
   console.log(`Config ${config.toBase58()}`);
+  console.log(`  admin    : ${admin.toBase58()}`);
+  console.log(`  treasury : ${treas.toBase58()}`);
+  console.log(`  fee      : ${fee / LAMPORTS_PER_SOL} SOL`);
+  console.log(`  renew    : ${renew / LAMPORTS_PER_SOL} SOL`);
+  console.log(`  period   : ${period}s`);
