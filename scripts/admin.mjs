@@ -88,3 +88,8 @@ async function initConfig() {
     : [
         { pubkey: admin.publicKey, isSigner: true, isWritable: true },
         { pubkey: config, isSigner: false, isWritable: true },
+        { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
+      ];
+
+  const ix = new TransactionInstruction({ programId, keys, data });
+  const sig = await sendAndConfirmTransaction(conn, new Transaction().add(ix), [admin]);
