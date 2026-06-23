@@ -123,3 +123,8 @@ async function info() {
   console.log(`  fee      : ${fee / LAMPORTS_PER_SOL} SOL`);
   console.log(`  renew    : ${renew / LAMPORTS_PER_SOL} SOL`);
   console.log(`  period   : ${period}s`);
+}
+
+const commands = { 'init-config': initConfig, info };
+(commands[cmd] || (() => {
+  console.log('Commands: init-config, info');
