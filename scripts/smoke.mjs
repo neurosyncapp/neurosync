@@ -28,3 +28,8 @@ const label = (args.name || 'testagent').toLowerCase();
 
 function parse(argv) {
   const o = {};
+  for (let i = 0; i < argv.length; i++) if (argv[i].startsWith('--')) o[argv[i].slice(2)] = argv[++i];
+  return o;
+}
+function bstr(s) {
+  const b = Buffer.from(s, 'utf8');
