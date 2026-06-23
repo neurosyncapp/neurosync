@@ -3,3 +3,8 @@
 //
 //   node scripts/smoke.mjs --rpc https://api.devnet.solana.com \
 //     --program <PROGRAM_ID> --secret <BASE58_SECRET> --name testagent
+//
+// Treasury defaults to the payer (matches `admin.mjs init-config --treasury <payer>`).
+
+import bs58 from 'bs58';
+import { createHash } from 'node:crypto';
