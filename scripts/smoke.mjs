@@ -53,3 +53,8 @@ function decodeName(data) {
   const lastBeat = Number(data.readBigInt64LE(o)); o += 8;
   const beats = Number(data.readBigUInt64LE(o)); o += 8;
   o += 1;
+  const ll = data.readUInt32LE(o); o += 4;
+  const lbl = data.subarray(o, o + ll).toString('utf8');
+  return { owner: owner.toBase58(), resolver: resolver.toBase58(), registeredAt, expiresAt, lastBeat, beats, label: lbl };
+}
+
