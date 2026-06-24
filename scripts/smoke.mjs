@@ -58,3 +58,8 @@ function decodeName(data) {
   return { owner: owner.toBase58(), resolver: resolver.toBase58(), registeredAt, expiresAt, lastBeat, beats, label: lbl };
 }
 
+async function main() {
+  console.log(`payer    ${payer.publicKey.toBase58()}`);
+  console.log(`balance  ${(await conn.getBalance(payer.publicKey)) / 1e9} SOL`);
+  console.log(`program  ${programId.toBase58()}`);
+  const name = namePda(label);
