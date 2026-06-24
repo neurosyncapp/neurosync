@@ -33,3 +33,8 @@ function parse(argv) {
 }
 function bstr(s) {
   const b = Buffer.from(s, 'utf8');
+  const len = Buffer.alloc(4);
+  len.writeUInt32LE(b.length);
+  return Buffer.concat([len, b]);
+}
+function sha256(s) {
