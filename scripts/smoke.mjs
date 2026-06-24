@@ -63,3 +63,8 @@ async function main() {
   console.log(`balance  ${(await conn.getBalance(payer.publicKey)) / 1e9} SOL`);
   console.log(`program  ${programId.toBase58()}`);
   const name = namePda(label);
+  console.log(`handle   ${label}.agent  -> ${name.toBase58()}`);
+
+  const existing = await conn.getAccountInfo(name);
+  if (existing) {
+    console.log('already registered; skipping register');
