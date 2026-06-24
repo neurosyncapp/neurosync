@@ -38,3 +38,8 @@ function bstr(s) {
   return Buffer.concat([len, b]);
 }
 function sha256(s) {
+  return createHash('sha256').update(Buffer.from(s, 'utf8')).digest();
+}
+const configPda = () => PublicKey.findProgramAddressSync([Buffer.from('config')], programId)[0];
+const namePda = (l) => PublicKey.findProgramAddressSync([Buffer.from('name'), sha256(l)], programId)[0];
+
