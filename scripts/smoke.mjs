@@ -43,3 +43,8 @@ function sha256(s) {
 const configPda = () => PublicKey.findProgramAddressSync([Buffer.from('config')], programId)[0];
 const namePda = (l) => PublicKey.findProgramAddressSync([Buffer.from('name'), sha256(l)], programId)[0];
 
+function decodeName(data) {
+  if (!data || data[0] !== 2) return null;
+  let o = 1;
+  const owner = new PublicKey(data.subarray(o, o + 32)); o += 32;
+  const resolver = new PublicKey(data.subarray(o, o + 32)); o += 32;
