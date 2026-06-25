@@ -83,3 +83,8 @@ async function main() {
     });
     const sig = await sendAndConfirmTransaction(conn, new Transaction().add(ix), [payer]);
     console.log(`REGISTER ok  ${sig}`);
+  }
+
+  const hb = new TransactionInstruction({
+    programId,
+    keys: [
