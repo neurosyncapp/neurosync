@@ -28,9 +28,9 @@ live on mainnet:
 
 ## 3. Branding details
 
-- [ ] Replace placeholder X/Twitter URL if needed. GitHub links now point to
-      `github.com/neurosyncapp/neurosync`; `TWITTER_URL` still comes from the
-      server `.env`.
+- [x] Replace placeholder social links. GitHub links now point to
+      `github.com/neurosyncapp/neurosync`, and X/Twitter points to
+      `x.com/neurosyncapp`.
 
 ## 4. GitHub
 

@@ -3,7 +3,7 @@ import { walletService } from '../lib/wallet.js';
 import { openWalletModal } from './wallet-modal.js';
 
 const DOCS_URL = 'https://docs.neuro-sync.app';
-const X_URL = 'https://x.com/neurosync';
+const X_URL = 'https://x.com/neurosyncapp';
 const GITHUB_URL = 'https://github.com/neurosyncapp/neurosync';
 
 const NAV_LINKS = [

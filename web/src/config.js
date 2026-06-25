@@ -9,7 +9,7 @@ const FALLBACK = {
   rpc: '/api/rpc',          // RPC is proxied so the Helius key stays server-side
   registerFeeSol: 0.05,     // display default; authoritative value comes from API
   treasury: '',
-  twitter: 'https://x.com/neurosync',
+  twitter: 'https://x.com/neurosyncapp',
   links: {},
 };
 

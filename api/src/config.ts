@@ -10,7 +10,7 @@ export const CONFIG = {
   registerFeeSol: Number(process.env.REGISTER_FEE_SOL || 0.05),
   onlineWindowMs: Number(process.env.ONLINE_WINDOW_MS || 300000),
   indexIntervalMs: Number(process.env.INDEX_INTERVAL_MS || 30000),
-  twitter: process.env.TWITTER_URL || 'https://x.com/neurosync',
+  twitter: process.env.TWITTER_URL || 'https://x.com/neurosyncapp',
 };
 
 export function publicConfig() {
