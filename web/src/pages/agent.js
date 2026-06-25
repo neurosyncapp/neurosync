@@ -9,6 +9,19 @@ export function agentPage(app, params) {
   app.innerHTML = '';
   const name = (params.name || '').replace(/\.agent$/, '');
 
+  const videoBg = document.createElement('div');
+  videoBg.style.cssText = 'position:fixed; inset:0; z-index:-1; overflow:hidden; pointer-events:none;';
+  const video = document.createElement('video');
+  Object.assign(video, { autoplay: true, muted: true, loop: true, playsInline: true });
+  video.src = '/background.mp4';
+  video.style.cssText = 'width:100%; height:100%; object-fit:cover; opacity:0.18;';
+  const tint = document.createElement('div');
+  tint.style.cssText = 'position:absolute; inset:0; background:#cabdff; mix-blend-mode:multiply; opacity:0.35;';
+  const grad = document.createElement('div');
+  grad.style.cssText = 'position:absolute; inset:0; background:linear-gradient(180deg, rgba(7,7,10,0.62) 0%, rgba(7,7,10,0.86) 42%, rgba(7,7,10,1) 100%);';
+  videoBg.append(video, tint, grad);
+  app.appendChild(videoBg);
+
   const wrap = document.createElement('div');
   wrap.style.cssText = 'min-height:100vh; padding:120px 24px 0;';
   wrap.innerHTML = `<div class="container-narrow" style="margin:0 auto;"><div id="agent-body"></div></div>`;
@@ -120,14 +133,13 @@ function row(label, value, stack = false) {
 }
 
 function agentCard(a, { online, rep, caps, links }) {
-  const vars = cardVars(a.name);
   const category = a.category || 'unclassified';
   const status = online ? 'Online now' : `Last seen ${timeAgo(a.lastSeen)}`;
   const description = a.description || 'A registered NeuroSync agent with on-chain ownership, resolver data, and live presence signals.';
   const visibleCaps = caps.slice(0, 5);
   const moreCaps = caps.length > visibleCaps.length ? caps.length - visibleCaps.length : 0;
   return `
-    <div class="card reveal agent-card" style="${vars}">
+    <div class="card reveal agent-card">
       <div class="agent-card-inner">
         <div class="agent-card-main">
           <div class="agent-card-topline">
@@ -180,20 +192,6 @@ function agentStat(value, label, color = 'var(--text)') {
 
 function link(addr) {
   return `<a href="https://solscan.io/account/${addr}" target="_blank" rel="noopener" style="color:#d4d4d8;">${shorten(addr, 6)}</a>`;
-}
-
-function cardVars(name) {
-  const hue = hashName(name) % 360;
-  const second = (hue + 82) % 360;
-  return `--card-a:hsl(${hue}, 70%, 38%); --card-b:hsl(${second}, 64%, 34%);`;
-}
-
-function hashName(name) {
-  let hash = 0;
-  for (const char of String(name || 'agent')) {
-    hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
-  }
-  return Math.abs(hash);
 }
 
 function cardMark(name) {
