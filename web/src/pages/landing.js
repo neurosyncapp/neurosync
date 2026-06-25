@@ -4,6 +4,8 @@ import { normalizeName } from '../lib/format.js';
 import { createRevealer } from '../lib/animate.js';
 import { SUFFIX } from '../config.js';
 
+const TOKEN_CA = '8Bc76BtofupwBDDAw4YUe2bF63GvA2YdQBzAh2Jkpump';
+
 export function landingPage(app) {
   app.innerHTML = '';
 
@@ -44,6 +46,11 @@ export function landingPage(app) {
 
     <div class="reveal" data-delay="360" style="margin-top:22px; font-size:13px; color:#52525b;">
       Resolvable on-chain. No API required.
+    </div>
+
+    <div class="reveal" data-delay="430" style="margin-top:18px; display:flex; align-items:center; gap:8px; max-width:100%; padding:8px 12px; border:1px solid rgba(255,255,255,0.08); border-radius:9px; background:rgba(10,10,14,0.58);">
+      <span class="mono" style="font-size:11px; color:#71717a;">CA</span>
+      <span class="mono" style="font-size:12px; color:#d4d4d8; word-break:break-all;">${TOKEN_CA}</span>
     </div>
   `;
   app.appendChild(hero);
