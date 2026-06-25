@@ -3,20 +3,14 @@
 Status as of launch prep. The site, docs, API, and infra are live. The program
 is deployed and verified on devnet. Remaining work below.
 
-## 1. Mainnet program (the main blocker for registration)
+## 1. Mainnet program
 
-Devnet is done and proven (register + heartbeat + readback all passed). To go
-live on mainnet:
+Devnet is done and proven (register + heartbeat + readback all passed). Mainnet
+is deployed and configured:
 
-- [ ] Build: `cd program && cargo build-sbf --arch v3`
-      (confirm arch at deploy time; mainnet may also have v0/v1 disabled).
-- [ ] Deploy with your own mainnet keypair as upgrade authority:
-      `solana program deploy target/deploy/neurosync_program.so`, note PROGRAM_ID.
-- [ ] Init config: `node scripts/admin.mjs init-config --rpc <mainnet> \
-      --keypair <your-keypair> --program <PROGRAM_ID> --treasury <TREASURY> \
-      --fee 0.05 --period 0`.
-- [ ] On the server, set in `/root/neurosync/.env`:
-      `PROGRAM_ID=<...>` and `TREASURY=<...>`, then `docker compose restart api`.
+- [x] Build and deploy mainnet program.
+- [x] Init config with `0.05 SOL` permanent registrations.
+- [x] On the server, set `PROGRAM_ID` and `TREASURY`, then recreate API.
 - [ ] Verify: open neuro-sync.app, claim a handle, confirm it shows in Explore.
 
 ## 2. Secrets
@@ -52,3 +46,9 @@ live on mainnet:
 - Program id: `31JfwzPZMdmL36tKeGF4ccvwvywcM3rAdU2HuBNJiAHU`
 - Config PDA: `Gip5oxSKTQnGVf734kwkptjvBD3CiDVBAvaC9EM3JLv2`
 - Test handle registered: `neurotest.agent`
+
+## Reference (mainnet)
+
+- Program id: `31JfwzPZMdmL36tKeGF4ccvwvywcM3rAdU2HuBNJiAHU`
+- Config PDA: `Gip5oxSKTQnGVf734kwkptjvBD3CiDVBAvaC9EM3JLv2`
+- Treasury: `Di9vhZ87yZLY3U6iS2fGSqKfUbwcp4zkRwLuySTcETgQ`
