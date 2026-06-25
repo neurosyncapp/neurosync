@@ -43,6 +43,10 @@ function render(body, a) {
   const rep = a.reputation ?? 0;
   const caps = Array.isArray(a.capabilities) ? a.capabilities : [];
   const links = a.links || {};
+  const profileUrl = `${location.origin}/agent/${encodeURIComponent(a.name)}`;
+  const apiUrl = `${location.origin}/api/agent/${encodeURIComponent(a.name)}`;
+  const ownerUrl = `https://solscan.io/account/${a.owner}`;
+  const resolverUrl = a.resolver ? `https://solscan.io/account/${a.resolver}` : '';
   body.innerHTML = `
     <div class="card reveal" style="padding:28px; margin-bottom:14px;">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
@@ -76,6 +80,22 @@ function render(body, a) {
       ${a.metadataUri ? row('Metadata', `<a href="${escapeHtml(a.metadataUri)}" target="_blank" rel="noopener" style="color:#a78bfa;">${escapeHtml(a.metadataUri)}</a>`, true) : ''}
     </div>
 
+    <div class="card reveal" style="padding:22px; margin-bottom:14px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-bottom:14px;">
+        <div>
+          <div style="font-size:11px; color:#52525b; text-transform:uppercase; letter-spacing:1px;">Verify and share</div>
+          <p style="font-size:13px; color:#71717a; margin-top:6px; line-height:1.5;">Copy the profile, inspect the indexed record, or open the on-chain accounts.</p>
+        </div>
+        <span class="mono" style="font-size:12px; color:#71717a;">${escapeHtml(a.name)}${SUFFIX}</span>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px;">
+        ${actionButton('Copy profile', profileUrl)}
+        ${actionButton('Copy API', apiUrl)}
+        ${actionLink('Owner on Solscan', ownerUrl)}
+        ${resolverUrl ? actionLink('Resolver on Solscan', resolverUrl) : actionButton('No resolver set', '', true)}
+      </div>
+    </div>
+
     ${
       caps.length
         ? `<div class="card reveal" style="padding:22px;">
@@ -91,6 +111,23 @@ function render(body, a) {
       <a href="/explore" data-link style="font-size:13px; color:#71717a;">← Back to explore</a>
     </div>
   `;
+
+  body.querySelectorAll('[data-copy]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      const value = button.getAttribute('data-copy');
+      if (!value) return;
+      const previous = button.textContent;
+      try {
+        await navigator.clipboard.writeText(value);
+        button.textContent = 'Copied';
+      } catch (_) {
+        button.textContent = 'Copy failed';
+      }
+      setTimeout(() => {
+        button.textContent = previous;
+      }, 1400);
+    });
+  });
 }
 
 function row(label, value, stack = false) {
@@ -104,6 +141,14 @@ function row(label, value, stack = false) {
 
 function link(addr) {
   return `<a href="https://solscan.io/account/${addr}" target="_blank" rel="noopener" style="color:#d4d4d8;">${shorten(addr, 6)}</a>`;
+}
+
+function actionButton(label, value, disabled = false) {
+  return `<button type="button" ${disabled ? 'disabled' : `data-copy="${escapeHtml(value)}"`} style="min-height:42px; padding:0 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.025); color:${disabled ? '#3f3f46' : '#d4d4d8'}; font-size:13px;">${escapeHtml(label)}</button>`;
+}
+
+function actionLink(label, href) {
+  return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="min-height:42px; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:8px; border:1px solid rgba(139,92,246,0.2); background:rgba(139,92,246,0.08); color:#c4b5fd; font-size:13px;">${escapeHtml(label)}</a>`;
 }
 
 // A social button shown even when the agent has no link set (muted, disabled).
