@@ -70,6 +70,10 @@ export class RegistryService {
          expires_at=EXCLUDED.expires_at, last_chain_beat=EXCLUDED.last_chain_beat,
          last_seen=GREATEST(agents.last_seen, EXCLUDED.last_chain_beat),
          heartbeat_count=GREATEST(agents.heartbeat_count, EXCLUDED.heartbeat_count),
+         category=CASE WHEN agents.metadata_uri IS DISTINCT FROM EXCLUDED.metadata_uri THEN NULL ELSE agents.category END,
+         capabilities=CASE WHEN agents.metadata_uri IS DISTINCT FROM EXCLUDED.metadata_uri THEN '[]'::jsonb ELSE agents.capabilities END,
+         description=CASE WHEN agents.metadata_uri IS DISTINCT FROM EXCLUDED.metadata_uri THEN NULL ELSE agents.description END,
+         links=CASE WHEN agents.metadata_uri IS DISTINCT FROM EXCLUDED.metadata_uri THEN NULL ELSE agents.links END,
          reputation=EXCLUDED.reputation, updated_at=now()`,
       [
         a.name, a.pda, a.owner, a.resolver, a.metadataUri,
