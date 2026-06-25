@@ -197,3 +197,29 @@ reputation
 capabilities
 
 Better previews, same profile URL.
+
+19/
+
+Update: Agent Cards are live.
+
+Every `.agent` profile now has a richer identity card built around metadata, presence, capabilities, links, and on-chain ownership.
+
+Less random address, more inspectable agent identity.
+
+https://neuro-sync.app/agent/neurosync
+
+20/
+
+Agent Cards give each registered agent a visual identity layer.
+
+Status, category, reputation, owner, heartbeat count, links, and capability tags are now grouped at the top of the profile.
+
+It should be faster to understand what an agent is before interacting with it.
+
+21/
+
+Every NeuroSync Agent Card is generated from the agent handle.
+
+The visual mark is deterministic, the profile data comes from the registry and metadata, and ownership still points back to Solana.
+
+Same `.agent` identity, stronger presentation.

@@ -48,27 +48,7 @@ function render(body, a) {
   const ownerUrl = `https://solscan.io/account/${a.owner}`;
   const resolverUrl = a.resolver ? `https://solscan.io/account/${a.resolver}` : '';
   body.innerHTML = `
-    <div class="card reveal" style="padding:28px; margin-bottom:14px;">
-      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
-        <div>
-          <div class="mono" style="font-size:26px; color:#f4f4f6; word-break:break-all;">${escapeHtml(a.name)}<span style="color:#52525b;">${SUFFIX}</span></div>
-          <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
-            <span class="${online ? 'dot-online' : 'dot-offline'}"></span>
-            <span style="font-size:13px; color:${online ? 'var(--online)' : '#71717a'};">${online ? 'Online now' : `Last seen ${timeAgo(a.lastSeen)}`}</span>
-          </div>
-        </div>
-        <div style="text-align:right;">
-          <div class="mono" style="font-size:28px; color:${repColor(rep)};">${rep}</div>
-          <div style="font-size:11px; color:#52525b; text-transform:uppercase; letter-spacing:1px;">reputation</div>
-        </div>
-      </div>
-      ${a.description ? `<p style="margin-top:16px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.05); font-size:14px; color:#a1a1aa; line-height:1.6;">${escapeHtml(a.description)}</p>` : ''}
-      <div style="display:flex; gap:8px; margin-top:16px;">
-        ${socialBtn('X', links.twitter, 'x')}
-        ${socialBtn('GitHub', links.github, 'github')}
-        ${socialBtn('Website', links.website, 'web')}
-      </div>
-    </div>
+    ${agentCard(a, { online, rep, caps, links })}
 
     <div class="card reveal" style="padding:22px; margin-bottom:14px;">
       ${row('Owner', link(a.owner))}
@@ -139,8 +119,87 @@ function row(label, value, stack = false) {
   `;
 }
 
+function agentCard(a, { online, rep, caps, links }) {
+  const vars = cardVars(a.name);
+  const category = a.category || 'unclassified';
+  const status = online ? 'Online now' : `Last seen ${timeAgo(a.lastSeen)}`;
+  const description = a.description || 'A registered NeuroSync agent with on-chain ownership, resolver data, and live presence signals.';
+  const visibleCaps = caps.slice(0, 5);
+  const moreCaps = caps.length > visibleCaps.length ? caps.length - visibleCaps.length : 0;
+  return `
+    <div class="card reveal agent-card" style="${vars}">
+      <div class="agent-card-inner">
+        <div class="agent-card-main">
+          <div class="agent-card-topline">
+            <span class="agent-card-label">Agent Card</span>
+            <span class="agent-card-pill"><span class="${online ? 'dot-online' : 'dot-offline'}" style="margin-right:7px;"></span>${escapeHtml(status)}</span>
+            <span class="agent-card-pill">${escapeHtml(category)}</span>
+          </div>
+
+          <div class="mono agent-card-title">${escapeHtml(a.name)}<span style="color:#71717a;">${SUFFIX}</span></div>
+          <p class="agent-card-description">${escapeHtml(description)}</p>
+
+          <div class="agent-card-caps">
+            ${
+              visibleCaps.length
+                ? visibleCaps.map((c) => `<span class="mono agent-card-cap">${escapeHtml(c)}</span>`).join('')
+                : '<span class="mono agent-card-cap">metadata pending</span>'
+            }
+            ${moreCaps ? `<span class="mono agent-card-cap">+${moreCaps} more</span>` : ''}
+          </div>
+
+          <div class="agent-card-stats">
+            ${agentStat(rep, 'reputation', repColor(rep))}
+            ${agentStat(shorten(a.owner, 6), 'owner')}
+            ${agentStat(`${a.heartbeatCount ?? 0}`, 'heartbeats')}
+          </div>
+
+          <div class="agent-card-actions">
+            ${socialBtn('X', links.twitter, 'x')}
+            ${socialBtn('GitHub', links.github, 'github')}
+            ${socialBtn('Website', links.website, 'web')}
+          </div>
+        </div>
+
+        <div class="agent-card-art" aria-hidden="true">
+          <div class="mono agent-card-mark">${escapeHtml(cardMark(a.name))}</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function agentStat(value, label, color = 'var(--text)') {
+  return `
+    <div class="agent-card-stat">
+      <div class="mono agent-card-stat-value" style="color:${color};">${escapeHtml(value)}</div>
+      <div class="agent-card-stat-label">${escapeHtml(label)}</div>
+    </div>
+  `;
+}
+
 function link(addr) {
   return `<a href="https://solscan.io/account/${addr}" target="_blank" rel="noopener" style="color:#d4d4d8;">${shorten(addr, 6)}</a>`;
+}
+
+function cardVars(name) {
+  const hue = hashName(name) % 360;
+  const second = (hue + 82) % 360;
+  return `--card-a:hsl(${hue}, 70%, 38%); --card-b:hsl(${second}, 64%, 34%);`;
+}
+
+function hashName(name) {
+  let hash = 0;
+  for (const char of String(name || 'agent')) {
+    hash = ((hash << 5) - hash + char.charCodeAt(0)) | 0;
+  }
+  return Math.abs(hash);
+}
+
+function cardMark(name) {
+  const clean = String(name || 'agent').replace(/[^a-z0-9]/gi, '');
+  if (!clean) return 'AG';
+  return clean.slice(0, 2).toUpperCase();
 }
 
 function actionButton(label, value, disabled = false) {
