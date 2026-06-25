@@ -89,3 +89,20 @@ export async function buildRegisterTx(opts, connection) {
   tx.recentBlockhash = blockhash;
   return tx;
 }
+
+export async function buildUpdateMetadataTx({ owner, label, metadataUri }, connection) {
+  const [namePda] = await deriveNamePda(label);
+  const data = Buffer.concat([Buffer.from([IX.UPDATE_METADATA]), borshString(metadataUri)]);
+  const tx = new Transaction().add(new TransactionInstruction({
+    programId: programId(),
+    keys: [
+      { pubkey: new PublicKey(owner), isSigner: true, isWritable: false },
+      { pubkey: namePda, isSigner: false, isWritable: true },
+    ],
+    data,
+  }));
+  tx.feePayer = new PublicKey(owner);
+  const { blockhash } = await connection.getLatestBlockhash('confirmed');
+  tx.recentBlockhash = blockhash;
+  return tx;
+}

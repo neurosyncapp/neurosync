@@ -130,6 +130,14 @@ class WalletService extends Emitter {
     }
     return sig; // submitted; treat as best-effort if confirmation lagged
   }
+
+  async signMessage(message) {
+    if (!this.isConnected()) throw new Error('Wallet not connected');
+    if (typeof this.adapter.signMessage !== 'function') {
+      throw new Error('Wallet does not support message signing');
+    }
+    return Array.from(await this.adapter.signMessage(new TextEncoder().encode(message)));
+  }
 }
 
 export const walletService = new WalletService();

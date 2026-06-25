@@ -6,10 +6,11 @@ import { ConfigController } from './config/config.controller';
 import { RpcController } from './rpc/rpc.controller';
 import { HeartbeatController } from './heartbeat/heartbeat.controller';
 import { ShareController } from './share/share.controller';
+import { HostedController } from './hosted/hosted.controller';
 import { IndexerService } from './indexer/indexer.service';
 
 @Module({
-  controllers: [ConfigController, RegistryController, RpcController, HeartbeatController, ShareController],
+  controllers: [ConfigController, RegistryController, RpcController, HeartbeatController, ShareController, HostedController],
   providers: [DbService, RegistryService, IndexerService],
 })
 export class AppModule {}

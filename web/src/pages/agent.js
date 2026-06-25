@@ -86,6 +86,7 @@ function render(body, a) {
         ${actionButton('Copy API', apiUrl)}
         ${actionLink('Owner on Solscan', ownerUrl)}
         ${resolverUrl ? actionLink('Resolver on Solscan', resolverUrl) : actionButton('No resolver set', '', true)}
+        ${actionLink('Set up hosted profile', `/agent/${encodeURIComponent(a.name)}/setup`, true)}
       </div>
     </div>
 
@@ -204,8 +205,8 @@ function actionButton(label, value, disabled = false) {
   return `<button type="button" ${disabled ? 'disabled' : `data-copy="${escapeHtml(value)}"`} style="min-height:42px; padding:0 12px; border-radius:8px; border:1px solid rgba(255,255,255,0.07); background:rgba(255,255,255,0.025); color:${disabled ? '#3f3f46' : '#d4d4d8'}; font-size:13px;">${escapeHtml(label)}</button>`;
 }
 
-function actionLink(label, href) {
-  return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener" style="min-height:42px; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:8px; border:1px solid rgba(139,92,246,0.2); background:rgba(139,92,246,0.08); color:#c4b5fd; font-size:13px;">${escapeHtml(label)}</a>`;
+function actionLink(label, href, internal = false) {
+  return `<a href="${escapeHtml(href)}" ${internal ? 'data-link' : 'target="_blank" rel="noopener"'} style="min-height:42px; display:flex; align-items:center; justify-content:center; padding:0 12px; border-radius:8px; border:1px solid rgba(139,92,246,0.2); background:rgba(139,92,246,0.08); color:#c4b5fd; font-size:13px;">${escapeHtml(label)}</a>`;
 }
 
 // A social button shown even when the agent has no link set (muted, disabled).

@@ -223,3 +223,30 @@ Every NeuroSync Agent Card is generated from the agent handle.
 The visual mark is deterministic, the profile data comes from the registry and metadata, and ownership still points back to Solana.
 
 Same `.agent` identity, stronger presentation.
+
+22/
+
+Big update: Hosted Agent Profiles.
+
+You can now make a `.agent` useful from NeuroSync without hosting a JSON file, setting up IPFS, or running your own server.
+
+Connect the owner wallet, fill the agent profile, sign once, and NeuroSync hosts the metadata.
+
+23/
+
+The new setup flow lives on every agent:
+
+`/agent/name/setup`
+
+Add description, category, capabilities, website, X, GitHub, and endpoint.
+
+NeuroSync turns that into a hosted manifest your profile can use immediately.
+
+24/
+
+Hosted profiles keep the ownership model intact.
+
+Only the owner wallet can edit a `.agent` profile, updates are signed, and the hosted URI can still be published on-chain.
+
+No external hosting needed.
+No random JSON deployment step.

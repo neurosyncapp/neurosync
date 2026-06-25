@@ -14,6 +14,7 @@ import { agentPage } from './pages/agent.js';
 import { registerPage } from './pages/register.js';
 import { activityPage } from './pages/activity.js';
 import { leaderboardPage } from './pages/leaderboard.js';
+import { setupPage } from './pages/setup.js';
 
 document.body.prepend(createNavbar());
 
@@ -21,6 +22,7 @@ route('/', landingPage);
 route('/explore', explorePage);
 route('/leaderboard', leaderboardPage);
 route('/agent/:name', agentPage);
+route('/agent/:name/setup', setupPage);
 route('/register', registerPage);
 route('/activity', activityPage);
 // /docs lives on its own subdomain, redirect any in-app hit (nginx also 301s).

@@ -103,6 +103,54 @@ export class RegistryService {
     return r.rows[0]?.owner || null;
   }
 
+  async saveHostedProfile(name: string, profile: {
+    description: string;
+    category: string;
+    capabilities: string[];
+    links: { website: string | null; twitter: string | null; github: string | null; endpoint: string | null };
+  }) {
+    await this.db.query(
+      `UPDATE agents
+       SET description=$2, category=$3, capabilities=$4, links=$5, updated_at=now()
+       WHERE name=$1`,
+      [
+        name,
+        profile.description || null,
+        profile.category || null,
+        JSON.stringify(profile.capabilities || []),
+        JSON.stringify(profile.links || {}),
+      ],
+    );
+    return profile;
+  }
+
+  async hostedManifest(raw: string) {
+    const name = normalizeName(raw);
+    const r = await this.db.query(
+      `SELECT name, owner, resolver, category, capabilities, description, links, last_seen, reputation
+       FROM agents WHERE name=$1`,
+      [name],
+    );
+    const row = r.rows[0];
+    if (!row) return null;
+    const links = row.links || {};
+    return {
+      name: `${row.name}${CONFIG.suffix}`,
+      owner: row.owner,
+      resolver: row.resolver,
+      category: row.category || null,
+      description: row.description || null,
+      capabilities: row.capabilities || [],
+      website: links.website || null,
+      twitter: links.twitter || null,
+      github: links.github || null,
+      endpoint: links.endpoint || null,
+      reputation: row.reputation || 0,
+      lastSeen: row.last_seen,
+      schema: 'neurosync.hosted-profile.v1',
+    };
+  }
+
   // ---- reads ----
   async availability(raw: string) {
     const name = normalizeName(raw);

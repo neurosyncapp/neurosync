@@ -28,6 +28,9 @@ export const explore = (params = {}) => {
 // full agent record
 export const getAgent = (name) => get(`/agent/${encodeURIComponent(name)}`);
 
+export const hostedManifestUrl = (name) => `${location.origin}/api/hosted/${encodeURIComponent(name)}.json`;
+export const saveHostedProfile = (name, payload) => post(`/hosted/${encodeURIComponent(name)}`, payload);
+
 // forward / reverse resolution
 export const resolve = (name) => get(`/resolve/${encodeURIComponent(name)}`);
 export const reverse = (wallet) => get(`/reverse/${encodeURIComponent(wallet)}`);
