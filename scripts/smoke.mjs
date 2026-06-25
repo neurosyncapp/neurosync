@@ -103,3 +103,4 @@ async function main() {
 main().catch((e) => {
   console.error('FAILED:', e.message);
   process.exit(1);
+});
