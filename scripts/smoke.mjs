@@ -88,3 +88,8 @@ async function main() {
   const hb = new TransactionInstruction({
     programId,
     keys: [
+      { pubkey: payer.publicKey, isSigner: true, isWritable: false },
+      { pubkey: name, isSigner: false, isWritable: true },
+    ],
+    data: Buffer.from([3]),
+  });
