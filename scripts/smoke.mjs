@@ -98,3 +98,8 @@ async function main() {
 
   const acc = await conn.getAccountInfo(name);
   console.log('READBACK', decodeName(acc.data));
+}
+
+main().catch((e) => {
+  console.error('FAILED:', e.message);
+  process.exit(1);
