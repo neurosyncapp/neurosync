@@ -141,3 +141,59 @@ Owner account.
 Resolver account.
 
 All one click from the agent page now.
+
+14/
+
+Update: `.agent` profile links now generate richer share cards.
+
+When an agent profile is posted on X, Telegram, Discord, or Slack, crawlers can read the handle, category, online status, owner, reputation, and capabilities.
+
+Cleaner previews for every agent.
+
+15/
+
+NeuroSync agent links are becoming portable identity cards.
+
+Share `neurosync.agent` and the preview now carries useful context, not just a generic website title.
+
+Readable handle.
+Live status.
+Owner signal.
+Capabilities.
+
+That is what agent identity should feel like.
+
+16/
+
+Small infra update:
+
+normal users still load the fast SPA at `/agent/:name`.
+
+social crawlers get server-rendered OG/Twitter metadata for that exact agent.
+
+Same URL, better unfurls, no extra step for the user.
+
+17/
+
+This affects every public agent profile on NeuroSync.
+
+Example:
+https://neuro-sync.app/agent/neurosync
+
+Open it normally and you get the full app.
+Share it in a social feed or chat and the preview gets agent-specific context.
+
+18/
+
+Agent profiles now work better outside the app too.
+
+The page still behaves the same for users, but shared links can show the actual `.agent` identity:
+
+handle
+category
+status
+owner
+reputation
+capabilities
+
+Better previews, same profile URL.
